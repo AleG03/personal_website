@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alessandrogallo.eu.org/sitemap.xml
