@@ -15,427 +15,12 @@
   <link rel="preconnect" href="https://github.com">
   <link rel="preconnect" href="https://linkedin.com">
 
-  <!-- Security Headers -->
-  <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self';">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="X-Frame-Options" content="DENY">
-  <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
-  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <!-- Theme color for browser UI -->
   <meta name="theme-color" content="#ffffff">
   <link rel="manifest" href="manifest.json">
 
-  <style>
-    /* Improved scrollbar for better UX */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #f1f1f1;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #888;
-      border-radius: 5px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: #555;
-    }
-
-    html {
-      scroll-padding-top: 5.5rem;
-    }
-
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: #fff;
-      color: #000;
-      scroll-behavior: smooth;
-      box-sizing: border-box;
-    }
-
-    *,
-    *:before,
-    *:after {
-      box-sizing: inherit;
-    }
-
-    .topbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 50;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.95);
-      border-bottom: 1px solid #e0e0e0;
-      padding: 1rem 1rem;
-      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-      backdrop-filter: blur(8px);
-      width: 100%;
-    }
-
-    .topbar nav {
-      display: flex;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .topbar a {
-      color: #000;
-      background: #fff;
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 500;
-      transition: background 0.2s, color 0.2s, opacity 0.2s;
-      padding: 0.25rem 0.75rem;
-      border-radius: 0.375rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 84px;
-      height: 2.25rem;
-      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-      border: none;
-    }
-
-    .topbar a.resume-btn {
-      color: #fff;
-      background: #000;
-    }
-
-    .topbar a:hover {
-      background: #222;
-      color: #fff;
-      opacity: 0.92;
-    }
-
-    .main-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 5.5rem;
-      min-height: 100vh;
-      background: #fff;
-      width: 100%;
-      box-sizing: border-box;
-      text-align: center;
-    }
-
-    .hero {
-      width: 100%;
-      max-width: 700px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 3rem 1rem 0 1rem;
-    }
-
-    .hero-img {
-      width: 8rem;
-      height: 8rem;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #fff;
-      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-      margin-bottom: 1rem;
-      aspect-ratio: 1/1;
-    }
-
-    .hero-title {
-      color: #000;
-      font-size: 2.25rem;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      margin: 0;
-    }
-
-    .hero-desc {
-      color: #666;
-      font-size: 1.125rem;
-      max-width: 40rem;
-      margin: 1rem auto 2.5rem auto;
-    }
-
-    .explore-btn {
-      min-width: 120px;
-      max-width: 16rem;
-      height: 2.75rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: #fff;
-      color: #000;
-      font-weight: 600;
-      border-radius: 0.5rem;
-      padding: 0 1.5rem;
-      font-size: 1.125rem;
-      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-      transition: background 0.2s, color 0.2s, opacity 0.2s;
-      text-decoration: none;
-      border: 1px solid #ddd;
-      margin-bottom: 2.5rem;
-    }
-
-    .explore-btn:hover {
-      background: #000;
-      color: #fff;
-      opacity: 0.92;
-    }
-
-    .section,
-    .resume-cta {
-      text-align: center;
-    }
-
-    .section p,
-    .resume-cta p {
-      margin: 1.5em 0;
-      line-height: 1.7;
-      font-size: 1.1em;
-      color: #666;
-    }
-
-    .section-title,
-    .hero-title,
-    .resume-cta h2 {
-      color: #000;
-    }
-
-    .section {
-      width: 100%;
-      max-width: 80rem;
-      margin: 0 auto 3rem auto;
-      padding: 0 1rem;
-      box-sizing: border-box;
-    }
-
-    .about-space {
-      margin-bottom: 2.5em;
-    }
-
-    .skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: center;
-    }
-
-    .skill-badge {
-      display: flex;
-      align-items: center;
-      height: 2.5rem;
-      background: #eee;
-      color: #222;
-      border-radius: 0.5rem;
-      padding: 0 1rem;
-      font-size: 1rem;
-      font-weight: 500;
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      margin-top: 1.5rem;
-    }
-
-    @media (min-width: 640px) {
-      .projects-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .projects-grid {
-        grid-template-columns: 1fr 1fr 1fr;
-      }
-    }
-
-    .project-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      border-radius: 1rem;
-      overflow: hidden;
-      background: linear-gradient(135deg, #fafbfc 60%, #f5f5f5 100%);
-      box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.07), 0 1.5px 4px 0 rgba(0, 0, 0, 0.03);
-      transition: box-shadow 0.2s, transform 0.18s;
-      border: 1.5px solid #ececec;
-      min-height: 180px;
-      padding: 0;
-    }
-
-    .project-card:hover {
-      box-shadow: 0 10px 24px -3px rgba(0, 0, 0, 0.10), 0 4px 8px -2px rgba(0, 0, 0, 0.04);
-      transform: translateY(-4px) scale(1.025);
-      border-color: #d1d5db;
-    }
-
-    .project-content {
-      width: 100%;
-      padding: 2rem 1.5rem 1.5rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .project-title {
-      color: #000;
-      font-size: 1.18rem;
-      font-weight: 700;
-      margin-bottom: 0.7rem;
-      letter-spacing: -0.01em;
-      text-align: center;
-    }
-
-    .project-desc {
-      color: #555;
-      font-size: 1.04rem;
-      line-height: 1.7;
-      text-align: center;
-      margin: 0;
-    }
-
-    .certifications-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-
-    @media (min-width: 640px) {
-      .certifications-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .certifications-grid {
-        grid-template-columns: 1fr 1fr 1fr;
-      }
-    }
-
-    .cert-card {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 0.75rem;
-      border: 1px solid #eee;
-      background: #fff;
-      padding: 1.25rem;
-      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-      text-align: center;
-    }
-
-    .cert-title {
-      color: #222;
-      font-size: 1rem;
-      font-weight: 600;
-      width: 100%;
-      text-align: center;
-    }
-
-    .resume-cta {
-      background: #f5f5f5;
-      border-radius: 0.75rem;
-      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-      padding: 2rem 1.5rem;
-      margin: 3rem auto;
-      text-align: center;
-      max-width: 700px;
-      width: 90vw;
-    }
-
-    .resume-btn-lg {
-      min-width: 150px;
-      max-width: 16rem;
-      height: 2.75rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #000;
-      color: #fff;
-      font-weight: 600;
-      border-radius: 0.5rem;
-      padding: 0 1.5rem;
-      font-size: 1.125rem;
-      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-      transition: background 0.2s, color 0.2s, opacity 0.2s;
-      margin: 0 auto;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-    }
-
-    .resume-btn-lg:hover {
-      background: #222;
-      color: #fff;
-      opacity: 0.92;
-    }
-
-    .contact-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    @media (min-width: 640px) {
-      .contact-list {
-        flex-direction: row;
-        justify-content: center;
-      }
-    }
-
-    .contact-link {
-      min-width: 180px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      background: #fff;
-      color: #000;
-      font-weight: 600;
-      border-radius: 0.5rem;
-      height: 2.75rem;
-      padding: 0 1.5rem;
-      font-size: 1rem;
-      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-      border: 1px solid #ddd;
-      transition: background 0.2s, color 0.2s, opacity 0.2s;
-      text-decoration: none;
-    }
-
-    .contact-link:hover {
-      background: #000;
-      color: #fff;
-      opacity: 0.92;
-    }
-
-    .footer {
-      width: 100%;
-      background: #f5f5f5;
-      border-top: 1px solid #e0e0e0;
-      padding: 2rem 1.5rem;
-      text-align: center;
-      color: #666;
-      font-size: 0.95rem;
-    }
-  </style>
+  <!-- External CSS -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -456,10 +41,9 @@
           height="128" />
         <h1 class="hero-title">
           <span class="tech-accent">Alessandro</span><br />
-          DevOps Engineer
+          AWS DevOps Engineer
         </h1>
-        <h2 style="color: #666; font-size: 1.25rem; font-weight: 500; margin-top: 0.5rem; margin-bottom: 1rem;">Senior
-          Consultant in beSharp spa</h2>
+        <h2 class="hero-subtitle">Senior Consultant in beSharp spa</h2>
         <p class="hero-desc">
           I specialize in automating and optimizing cloud infrastructure to enhance application performance and
           reliability, ensuring seamless deployment and robust operations.
@@ -482,15 +66,15 @@
       <div class="section" id="skills">
         <h2 class="section-title">Core Skills</h2>
         <div class="skills-list">
-          <span class="skill-badge">Cloud Platforms (AWS, Azure, Oracle Cloud)</span>
+          <span class="skill-badge">AWS (EC2, S3, Lambda, RDS, VPC, IAM, CloudWatch)</span>
+          <span class="skill-badge">Infrastructure as Code (Terraform, CDK, CloudFormation)</span>
           <span class="skill-badge">Containerization (Docker, Kubernetes)</span>
-          <span class="skill-badge">CI/CD (Jenkins, GitLab CI, GitHub Actions)</span>
-          <span class="skill-badge">IaC (CDK, Terraform, Cloudformation)</span>
-          <span class="skill-badge">Scripting (Python, Bash, PowerShell)</span>
-          <span class="skill-badge">Monitoring (Prometheus, Grafana, Elastic)</span>
-          <span class="skill-badge">Logging (ELK Stack)</span>
-          <span class="skill-badge">Version Control (Git)</span>
-          <span class="skill-badge">Networking & Security</span>
+          <span class="skill-badge">CI/CD (Jenkins, GitLab CI, GitHub Actions, AWS CodePipeline)</span>
+          <span class="skill-badge">Cost Optimization & FinOps</span>
+          <span class="skill-badge">Scripting (Python, Bash, PowerShell, SQL)</span>
+          <span class="skill-badge">Monitoring (Prometheus, Grafana, ELK Stack)</span>
+          <span class="skill-badge">Multi-Cloud (Azure, Oracle Cloud)</span>
+          <span class="skill-badge">Security & Networking</span>
         </div>
       </div>
       <div class="section" id="projects">
@@ -499,23 +83,28 @@
           <div class="project-card">
             <div class="project-content">
               <h3 class="project-title">Data Platform (DevOps)</h3>
-              <p class="project-desc">Designed and automated a secure ETL data platform for an international
-                humanitarian organization, consolidating a Single Point of Truth and significantly reducing analyst
-                workload in a sensitive environment.</p>
+              <p class="project-desc">Architected a secure, serverless ETL data platform using AWS Glue, S3, and
+                Redshift for an international
+                humanitarian organization. Implemented a Single Point of Truth architecture, reducing manual analyst
+                workload by 30% while ensuring robust data processing in sensitive environments.</p>
             </div>
           </div>
           <div class="project-card">
             <div class="project-content">
               <h3 class="project-title">FinOps Assessment (Cloud Finance)</h3>
-              <p class="project-desc">Conducted a comprehensive cloud cost assessment for a humanitarian organization,
-                identifying key savings opportunities and reducing cloud spending by 65%.</p>
+              <p class="project-desc">Led a comprehensive cloud financial assessment analyzing EC2, S3, and data
+                transfer spending
+                for a humanitarian organization. Delivered a strategic cost optimization plan that reduced monthly cloud
+                spending by 65% through rightsizing, storage tiering, and Savings Plans implementation.</p>
             </div>
           </div>
           <div class="project-card">
             <div class="project-content">
               <h3 class="project-title">Web Staticization & Edge Optimization (Cloud Operations)</h3>
-              <p class="project-desc">Engineered a CI/CD pipeline to staticize a dynamic website, leveraging edge
-                locations and serverless redirects to significantly improve latency and global user experience.</p>
+              <p class="project-desc">Engineered a CI/CD pipeline using AWS CodePipeline to convert a dynamic website to
+                static hosting on S3.
+                Implemented CloudFront distribution and Lambda@Edge functions, reducing global average page load times
+                by over 70% and dramatically improving user experience worldwide.</p>
             </div>
           </div>
         </div>
@@ -527,16 +116,25 @@
             <h3 class="cert-title">AWS Certified Solutions Architect Professional</h3>
           </div>
           <div class="cert-card">
-            <h3 class="cert-title">Microsoft & Azure Fundamentals</h3>
+            <h3 class="cert-title">AWS Certified Developer Associate</h3>
           </div>
           <div class="cert-card">
-            <h3 class="cert-title">Cisco Security and Zyxel Network Engineer Certified</h3>
+            <h3 class="cert-title">AWS Certified SysOps Administrator Associate</h3>
+          </div>
+          <div class="cert-card">
+            <h3 class="cert-title">AWS Certified Solutions Architect Associate</h3>
+          </div>
+          <div class="cert-card">
+            <h3 class="cert-title">Microsoft Azure Fundamentals</h3>
+          </div>
+          <div class="cert-card">
+            <h3 class="cert-title">Cisco Security and Network Defense Certified</h3>
           </div>
         </div>
       </div>
       <div class="section resume-cta" id="resume-cta">
-        <h2 class="text-black text-2xl md:text-3xl font-bold tracking-tight mb-4">Ready to Dive Deeper?</h2>
-        <p class="text-gray-700 text-base md:text-lg mb-8 max-w-xl mx-auto">
+        <h2 class="resume-cta-title">Ready to Dive Deeper?</h2>
+        <p class="resume-cta-text">
           Take a look at my resume to get a comprehensive overview of my skills, experience, and achievements.
         </p>
         <a href="AlessandroGallo_CV.pdf" class="resume-btn-lg" target="_blank" rel="noopener">
@@ -545,7 +143,7 @@
       </div>
       <div class="section" id="contact">
         <h2 class="section-title">Get In Touch</h2>
-        <p class="text-gray-700 text-base md:text-lg mb-8 max-w-xl mx-auto text-center">
+        <p class="contact-text">
           Feel free to reach out via email or connect with me on GitHub and LinkedIn.
         </p>
         <div class="contact-list">
@@ -565,8 +163,8 @@
     </main>
   </div>
   <footer class="footer">
-    <div class="max-w-5xl mx-auto px-6 md:px-10 py-8 text-center">
-      <p class="text-gray-600 text-sm">
+    <div class="footer-content">
+      <p class="footer-text">
         © 2025 Alessandro. All rights reserved.
         <br />
         Built with HTML, CSS, and <span class="tech-accent">passion</span>.
