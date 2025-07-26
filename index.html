@@ -76,7 +76,8 @@
       <a href="#contact">Contact</a>
       <a class="resume-btn" href="#resume-cta">Resume</a>
       <label class="theme-toggle" for="theme-switch" aria-label="Toggle dark mode">
-        <input type="checkbox" id="theme-switch" class="theme-switch">
+        <input type="checkbox" id="theme-switch" class="theme-switch"
+          onchange="document.body.classList.toggle('dark-mode')">
         <span class="toggle-slider"></span>
       </label>
     </nav>

@@ -512,263 +512,378 @@ Mode Toggle */
 
 /* System Dark Mode Detection */
 @media (prefers-color-scheme: dark) {
-  body:not(:has(.theme-switch:checked)) {
+  body {
     background: #121212;
     color: #e0e0e0;
   }
 }
 
-/* Manual Light Mode Override (when system is dark) */
+/* Manual Dark Mode Class */
+body.dark-mode {
+  background: #121212;
+  color: #e0e0e0;
+}
+
+/* Override system dark mode when manual light mode is active */
 @media (prefers-color-scheme: dark) {
-  body:has(.theme-switch:checked) {
+  body:not(.dark-mode) {
     background: #fff;
     color: #000;
   }
 }
 
-/* Manual Dark Mode Override (when system is light) */
-@media (prefers-color-scheme: light) {
-  body:has(.theme-switch:checked) {
-    background: #121212;
-    color: #e0e0e0;
-  }
-}
-
-/* System Dark Mode Styles (when toggle is NOT checked) */
+/* Dark Mode Styles (both system and manual) */
 @media (prefers-color-scheme: dark) {
-  body:not(:has(.theme-switch:checked)) .topbar {
+  .topbar {
     background: rgba(18, 18, 18, 0.95);
     border-bottom: 1px solid #333;
   }
-
-  body:not(:has(.theme-switch:checked)) .topbar a {
+  
+  .topbar a {
     color: #e0e0e0;
     background: #1e1e1e;
   }
-
-  body:not(:has(.theme-switch:checked)) .topbar a.resume-btn {
+  
+  .topbar a.resume-btn {
     color: #121212;
     background: #e0e0e0;
   }
-
-  body:not(:has(.theme-switch:checked)) .topbar a:hover {
+  
+  .topbar a:hover {
     background: #e0e0e0;
     color: #121212;
   }
-
-  body:not(:has(.theme-switch:checked)) .main-container {
+  
+  .main-container {
     background: #121212;
   }
-
-  body:not(:has(.theme-switch:checked)) .hero-title,
-  body:not(:has(.theme-switch:checked)) .section-title,
-  body:not(:has(.theme-switch:checked)) .resume-cta-title {
+  
+  .hero-title,
+  .section-title,
+  .resume-cta-title {
     color: #e0e0e0;
   }
-
-  body:not(:has(.theme-switch:checked)) .hero-desc,
-  body:not(:has(.theme-switch:checked)) .section p,
-  body:not(:has(.theme-switch:checked)) .resume-cta-text,
-  body:not(:has(.theme-switch:checked)) .contact-text {
+  
+  .hero-desc,
+  .section p,
+  .resume-cta-text,
+  .contact-text {
     color: #b0b0b0;
   }
-
-  body:not(:has(.theme-switch:checked)) .explore-btn {
+  
+  .explore-btn {
     background: #1e1e1e;
     color: #e0e0e0;
     border: 1px solid #333;
   }
-
-  body:not(:has(.theme-switch:checked)) .explore-btn:hover {
+  
+  .explore-btn:hover {
     background: #e0e0e0;
     color: #121212;
   }
-
-  body:not(:has(.theme-switch:checked)) .skill-badge {
+  
+  .skill-badge {
     background: #1e1e1e;
     color: #e0e0e0;
   }
-
-  body:not(:has(.theme-switch:checked)) .project-card {
+  
+  .project-card {
     background: linear-gradient(135deg, #1e1e1e 60%, #2a2a2a 100%);
     border: 1.5px solid #333;
   }
-
-  body:not(:has(.theme-switch:checked)) .project-card:hover {
+  
+  .project-card:hover {
     border-color: #555;
   }
-
-  body:not(:has(.theme-switch:checked)) .project-title {
+  
+  .project-title {
     color: #e0e0e0;
   }
-
-  body:not(:has(.theme-switch:checked)) .project-desc {
+  
+  .project-desc {
     color: #b0b0b0;
   }
-
-  body:not(:has(.theme-switch:checked)) .cert-card {
+  
+  .cert-card {
     background: #1e1e1e;
     border: 1px solid #333;
   }
-
-  body:not(:has(.theme-switch:checked)) .cert-title {
+  
+  .cert-title {
     color: #e0e0e0;
   }
-
-  body:not(:has(.theme-switch:checked)) .resume-cta {
+  
+  .resume-cta {
     background: #1e1e1e;
   }
-
-  body:not(:has(.theme-switch:checked)) .resume-btn-lg {
+  
+  .resume-btn-lg {
     background: #e0e0e0;
     color: #121212;
   }
-
-  body:not(:has(.theme-switch:checked)) .resume-btn-lg:hover {
+  
+  .resume-btn-lg:hover {
     background: #f0f0f0;
   }
-
-  body:not(:has(.theme-switch:checked)) .contact-link {
+  
+  .contact-link {
     background: #1e1e1e;
     color: #e0e0e0;
     border: 1px solid #333;
   }
-
-  body:not(:has(.theme-switch:checked)) .contact-link:hover {
+  
+  .contact-link:hover {
     background: #e0e0e0;
     color: #121212;
   }
-
-  body:not(:has(.theme-switch:checked)) .footer {
+  
+  .footer {
     background: #1e1e1e;
     border-top: 1px solid #333;
   }
-
-  body:not(:has(.theme-switch:checked)) .footer-text {
+  
+  .footer-text {
     color: #b0b0b0;
   }
-
-  body:not(:has(.theme-switch:checked)) .tech-accent {
+  
+  .tech-accent {
     color: #e0e0e0;
   }
 }
 
-/* Manual Dark Mode Override (when system is light but user wants dark) */
-@media (prefers-color-scheme: light) {
-  body:has(.theme-switch:checked) .topbar {
-    background: rgba(18, 18, 18, 0.95);
-    border-bottom: 1px solid #333;
-  }
+/* Manual Dark Mode Class (same styles as system dark mode) */
+body.dark-mode .topbar {
+  background: rgba(18, 18, 18, 0.95);
+  border-bottom: 1px solid #333;
+}
 
-  body:has(.theme-switch:checked) .topbar a {
-    color: #e0e0e0;
-    background: #1e1e1e;
-  }
+body.dark-mode .topbar a {
+  color: #e0e0e0;
+  background: #1e1e1e;
+}
 
-  body:has(.theme-switch:checked) .topbar a.resume-btn {
-    color: #121212;
-    background: #e0e0e0;
-  }
+body.dark-mode .topbar a.resume-btn {
+  color: #121212;
+  background: #e0e0e0;
+}
 
-  body:has(.theme-switch:checked) .topbar a:hover {
-    background: #e0e0e0;
-    color: #121212;
-  }
+body.dark-mode .topbar a:hover {
+  background: #e0e0e0;
+  color: #121212;
+}
 
-  body:has(.theme-switch:checked) .main-container {
-    background: #121212;
-  }
+body.dark-mode .main-container {
+  background: #121212;
+}
 
-  body:has(.theme-switch:checked) .hero-title,
-  body:has(.theme-switch:checked) .section-title,
-  body:has(.theme-switch:checked) .resume-cta-title {
-    color: #e0e0e0;
-  }
+body.dark-mode .hero-title,
+body.dark-mode .section-title,
+body.dark-mode .resume-cta-title {
+  color: #e0e0e0;
+}
 
-  body:has(.theme-switch:checked) .hero-desc,
-  body:has(.theme-switch:checked) .section p,
-  body:has(.theme-switch:checked) .resume-cta-text,
-  body:has(.theme-switch:checked) .contact-text {
-    color: #b0b0b0;
-  }
+body.dark-mode .hero-desc,
+body.dark-mode .section p,
+body.dark-mode .resume-cta-text,
+body.dark-mode .contact-text {
+  color: #b0b0b0;
+}
 
-  body:has(.theme-switch:checked) .explore-btn {
-    background: #1e1e1e;
-    color: #e0e0e0;
-    border: 1px solid #333;
-  }
+body.dark-mode .explore-btn {
+  background: #1e1e1e;
+  color: #e0e0e0;
+  border: 1px solid #333;
+}
 
-  body:has(.theme-switch:checked) .explore-btn:hover {
-    background: #e0e0e0;
-    color: #121212;
-  }
+body.dark-mode .explore-btn:hover {
+  background: #e0e0e0;
+  color: #121212;
+}
 
-  body:has(.theme-switch:checked) .skill-badge {
-    background: #1e1e1e;
-    color: #e0e0e0;
-  }
+body.dark-mode .skill-badge {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
 
-  body:has(.theme-switch:checked) .project-card {
-    background: linear-gradient(135deg, #1e1e1e 60%, #2a2a2a 100%);
-    border: 1.5px solid #333;
-  }
+body.dark-mode .project-card {
+  background: linear-gradient(135deg, #1e1e1e 60%, #2a2a2a 100%);
+  border: 1.5px solid #333;
+}
 
-  body:has(.theme-switch:checked) .project-card:hover {
-    border-color: #555;
-  }
+body.dark-mode .project-card:hover {
+  border-color: #555;
+}
 
-  body:has(.theme-switch:checked) .project-title {
-    color: #e0e0e0;
-  }
+body.dark-mode .project-title {
+  color: #e0e0e0;
+}
 
-  body:has(.theme-switch:checked) .project-desc {
-    color: #b0b0b0;
-  }
+body.dark-mode .project-desc {
+  color: #b0b0b0;
+}
 
-  body:has(.theme-switch:checked) .cert-card {
-    background: #1e1e1e;
-    border: 1px solid #333;
-  }
+body.dark-mode .cert-card {
+  background: #1e1e1e;
+  border: 1px solid #333;
+}
 
-  body:has(.theme-switch:checked) .cert-title {
-    color: #e0e0e0;
-  }
+body.dark-mode .cert-title {
+  color: #e0e0e0;
+}
 
-  body:has(.theme-switch:checked) .resume-cta {
-    background: #1e1e1e;
-  }
+body.dark-mode .resume-cta {
+  background: #1e1e1e;
+}
 
-  body:has(.theme-switch:checked) .resume-btn-lg {
-    background: #e0e0e0;
-    color: #121212;
-  }
+body.dark-mode .resume-btn-lg {
+  background: #e0e0e0;
+  color: #121212;
+}
 
-  body:has(.theme-switch:checked) .resume-btn-lg:hover {
-    background: #f0f0f0;
-  }
+body.dark-mode .resume-btn-lg:hover {
+  background: #f0f0f0;
+}
 
-  body:has(.theme-switch:checked) .contact-link {
-    background: #1e1e1e;
-    color: #e0e0e0;
-    border: 1px solid #333;
-  }
+body.dark-mode .contact-link {
+  background: #1e1e1e;
+  color: #e0e0e0;
+  border: 1px solid #333;
+}
 
-  body:has(.theme-switch:checked) .contact-link:hover {
-    background: #e0e0e0;
-    color: #121212;
-  }
+body.dark-mode .contact-link:hover {
+  background: #e0e0e0;
+  color: #121212;
+}
 
-  body:has(.theme-switch:checked) .footer {
-    background: #1e1e1e;
-    border-top: 1px solid #333;
-  }
+body.dark-mode .footer {
+  background: #1e1e1e;
+  border-top: 1px solid #333;
+}
 
-  body:has(.theme-switch:checked) .footer-text {
-    color: #b0b0b0;
-  }
+body.dark-mode .footer-text {
+  color: #b0b0b0;
+}
 
-  body:has(.theme-switch:checked) .tech-accent {
-    color: #e0e0e0;
+body.dark-mode .tech-accent {
+  color: #e0e0e0;
+}
+
+/* Override system dark mode when not in manual dark mode */
+@media (prefers-color-scheme: dark) {
+  body:not(.dark-mode) .topbar {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  body:not(.dark-mode) .topbar a {
+    color: #000;
+    background: #fff;
+  }
+  
+  body:not(.dark-mode) .topbar a.resume-btn {
+    color: #fff;
+    background: #000;
+  }
+  
+  body:not(.dark-mode) .topbar a:hover {
+    background: #222;
+    color: #fff;
+  }
+  
+  body:not(.dark-mode) .main-container {
+    background: #fff;
+  }
+  
+  body:not(.dark-mode) .hero-title,
+  body:not(.dark-mode) .section-title,
+  body:not(.dark-mode) .resume-cta-title {
+    color: #000;
+  }
+  
+  body:not(.dark-mode) .hero-desc,
+  body:not(.dark-mode) .section p,
+  body:not(.dark-mode) .resume-cta-text,
+  body:not(.dark-mode) .contact-text {
+    color: #666;
+  }
+  
+  body:not(.dark-mode) .explore-btn {
+    background: #fff;
+    color: #000;
+    border: 1px solid #ddd;
+  }
+  
+  body:not(.dark-mode) .explore-btn:hover {
+    background: #000;
+    color: #fff;
+  }
+  
+  body:not(.dark-mode) .skill-badge {
+    background: #eee;
+    color: #222;
+  }
+  
+  body:not(.dark-mode) .project-card {
+    background: linear-gradient(135deg, #fafbfc 60%, #f5f5f5 100%);
+    border: 1.5px solid #ececec;
+  }
+  
+  body:not(.dark-mode) .project-card:hover {
+    border-color: #d1d5db;
+  }
+  
+  body:not(.dark-mode) .project-title {
+    color: #000;
+  }
+  
+  body:not(.dark-mode) .project-desc {
+    color: #555;
+  }
+  
+  body:not(.dark-mode) .cert-card {
+    background: #fff;
+    border: 1px solid #eee;
+  }
+  
+  body:not(.dark-mode) .cert-title {
+    color: #222;
+  }
+  
+  body:not(.dark-mode) .resume-cta {
+    background: #f5f5f5;
+  }
+  
+  body:not(.dark-mode) .resume-btn-lg {
+    background: #000;
+    color: #fff;
+  }
+  
+  body:not(.dark-mode) .resume-btn-lg:hover {
+    background: #222;
+  }
+  
+  body:not(.dark-mode) .contact-link {
+    background: #fff;
+    color: #000;
+    border: 1px solid #ddd;
+  }
+  
+  body:not(.dark-mode) .contact-link:hover {
+    background: #000;
+    color: #fff;
+  }
+  
+  body:not(.dark-mode) .footer {
+    background: #f5f5f5;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  body:not(.dark-mode) .footer-text {
+    color: #666;
+  }
+  
+  body:not(.dark-mode) .tech-accent {
+    color: #000;
   }
 }
 
