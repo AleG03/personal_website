@@ -20,8 +20,50 @@
   <meta name="theme-color" content="#000000">
   <link rel="manifest" href="manifest.json">
 
-  <!-- External CSS -->
+  <!-- Performance optimizations -->
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="preload" href="AlessandroGallo.jpg" as="image">
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Alessandro Gallo - AWS DevOps Engineer">
+  <meta property="og:description"
+    content="AWS DevOps Engineer specializing in cloud infrastructure automation, cost optimization, and scalable solutions with proven results.">
+  <meta property="og:url" content="https://alessandrogallo.eu.org">
+  <meta property="og:image" content="https://alessandrogallo.eu.org/AlessandroGallo.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Alessandro Gallo - AWS DevOps Engineer">
+  <meta name="twitter:description"
+    content="AWS DevOps Engineer specializing in cloud infrastructure automation and cost optimization.">
+  <meta name="twitter:image" content="https://alessandrogallo.eu.org/AlessandroGallo.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Alessandro Gallo",
+    "jobTitle": "AWS DevOps Engineer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "beSharp spa"
+    },
+    "url": "https://alessandrogallo.eu.org",
+    "image": "https://alessandrogallo.eu.org/AlessandroGallo.jpg",
+    "sameAs": [
+      "https://github.com/AleG03",
+      "https://linkedin.com/in/alessandro-gallo-cassarino-666607228"
+    ],
+    "knowsAbout": ["AWS", "DevOps", "Cloud Infrastructure", "Terraform", "Kubernetes", "Cost Optimization"],
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "ITS Angelo Rizzoli"
+    }
+  }
+  </script>
 </head>
 
 <body>
@@ -33,6 +75,10 @@
       <a href="#certifications">Certifications</a>
       <a href="#contact">Contact</a>
       <a class="resume-btn" href="#resume-cta">Resume</a>
+      <label class="theme-toggle" for="theme-switch" aria-label="Toggle dark mode">
+        <input type="checkbox" id="theme-switch" class="theme-switch">
+        <span class="toggle-slider"></span>
+      </label>
     </nav>
   </div>
   <div class="main-container">
@@ -143,12 +189,13 @@
         </a>
       </div>
       <div class="section" id="contact">
-        <h2 class="section-title">Get In Touch</h2>
+        <h2 class="section-title">Let's Connect</h2>
         <p class="contact-text">
-          Feel free to reach out via email or connect with me on GitHub and LinkedIn.
+          Interested in discussing cloud infrastructure, DevOps strategies, or potential collaborations?
+          I'm always open to connecting with fellow professionals and exploring new opportunities.
         </p>
         <div class="contact-list">
-          <a class="contact-link" href="mailto:gc.ale03@gmail.com">
+          <a class="contact-link" href="mailto:gc.ale03@gmail.com" aria-label="Send email to Alessandro">
             Email Me
           </a>
           <a class="contact-link" href="https://github.com/AleG03" rel="noopener noreferrer" target="_blank"

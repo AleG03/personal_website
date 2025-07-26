@@ -462,3 +462,332 @@ body {
 .tech-accent {
   color: #000;
 }
+/* Dark 
+Mode Toggle */
+.theme-toggle {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  margin-left: 1rem;
+}
+
+.theme-switch {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.3s;
+  border-radius: 24px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.theme-switch:checked + .toggle-slider {
+  background-color: #000;
+}
+
+.theme-switch:checked + .toggle-slider:before {
+  transform: translateX(26px);
+}
+
+/* System Dark Mode Detection */
+@media (prefers-color-scheme: dark) {
+  body:not(:has(.theme-switch:checked)) {
+    background: #121212;
+    color: #e0e0e0;
+  }
+}
+
+/* Manual Light Mode Override (when system is dark) */
+@media (prefers-color-scheme: dark) {
+  body:has(.theme-switch:checked) {
+    background: #fff;
+    color: #000;
+  }
+}
+
+/* Manual Dark Mode Override (when system is light) */
+@media (prefers-color-scheme: light) {
+  body:has(.theme-switch:checked) {
+    background: #121212;
+    color: #e0e0e0;
+  }
+}
+
+/* System Dark Mode Styles (when toggle is NOT checked) */
+@media (prefers-color-scheme: dark) {
+  body:not(:has(.theme-switch:checked)) .topbar {
+    background: rgba(18, 18, 18, 0.95);
+    border-bottom: 1px solid #333;
+  }
+
+  body:not(:has(.theme-switch:checked)) .topbar a {
+    color: #e0e0e0;
+    background: #1e1e1e;
+  }
+
+  body:not(:has(.theme-switch:checked)) .topbar a.resume-btn {
+    color: #121212;
+    background: #e0e0e0;
+  }
+
+  body:not(:has(.theme-switch:checked)) .topbar a:hover {
+    background: #e0e0e0;
+    color: #121212;
+  }
+
+  body:not(:has(.theme-switch:checked)) .main-container {
+    background: #121212;
+  }
+
+  body:not(:has(.theme-switch:checked)) .hero-title,
+  body:not(:has(.theme-switch:checked)) .section-title,
+  body:not(:has(.theme-switch:checked)) .resume-cta-title {
+    color: #e0e0e0;
+  }
+
+  body:not(:has(.theme-switch:checked)) .hero-desc,
+  body:not(:has(.theme-switch:checked)) .section p,
+  body:not(:has(.theme-switch:checked)) .resume-cta-text,
+  body:not(:has(.theme-switch:checked)) .contact-text {
+    color: #b0b0b0;
+  }
+
+  body:not(:has(.theme-switch:checked)) .explore-btn {
+    background: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #333;
+  }
+
+  body:not(:has(.theme-switch:checked)) .explore-btn:hover {
+    background: #e0e0e0;
+    color: #121212;
+  }
+
+  body:not(:has(.theme-switch:checked)) .skill-badge {
+    background: #1e1e1e;
+    color: #e0e0e0;
+  }
+
+  body:not(:has(.theme-switch:checked)) .project-card {
+    background: linear-gradient(135deg, #1e1e1e 60%, #2a2a2a 100%);
+    border: 1.5px solid #333;
+  }
+
+  body:not(:has(.theme-switch:checked)) .project-card:hover {
+    border-color: #555;
+  }
+
+  body:not(:has(.theme-switch:checked)) .project-title {
+    color: #e0e0e0;
+  }
+
+  body:not(:has(.theme-switch:checked)) .project-desc {
+    color: #b0b0b0;
+  }
+
+  body:not(:has(.theme-switch:checked)) .cert-card {
+    background: #1e1e1e;
+    border: 1px solid #333;
+  }
+
+  body:not(:has(.theme-switch:checked)) .cert-title {
+    color: #e0e0e0;
+  }
+
+  body:not(:has(.theme-switch:checked)) .resume-cta {
+    background: #1e1e1e;
+  }
+
+  body:not(:has(.theme-switch:checked)) .resume-btn-lg {
+    background: #e0e0e0;
+    color: #121212;
+  }
+
+  body:not(:has(.theme-switch:checked)) .resume-btn-lg:hover {
+    background: #f0f0f0;
+  }
+
+  body:not(:has(.theme-switch:checked)) .contact-link {
+    background: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #333;
+  }
+
+  body:not(:has(.theme-switch:checked)) .contact-link:hover {
+    background: #e0e0e0;
+    color: #121212;
+  }
+
+  body:not(:has(.theme-switch:checked)) .footer {
+    background: #1e1e1e;
+    border-top: 1px solid #333;
+  }
+
+  body:not(:has(.theme-switch:checked)) .footer-text {
+    color: #b0b0b0;
+  }
+
+  body:not(:has(.theme-switch:checked)) .tech-accent {
+    color: #e0e0e0;
+  }
+}
+
+/* Manual Dark Mode Override (when system is light but user wants dark) */
+@media (prefers-color-scheme: light) {
+  body:has(.theme-switch:checked) .topbar {
+    background: rgba(18, 18, 18, 0.95);
+    border-bottom: 1px solid #333;
+  }
+
+  body:has(.theme-switch:checked) .topbar a {
+    color: #e0e0e0;
+    background: #1e1e1e;
+  }
+
+  body:has(.theme-switch:checked) .topbar a.resume-btn {
+    color: #121212;
+    background: #e0e0e0;
+  }
+
+  body:has(.theme-switch:checked) .topbar a:hover {
+    background: #e0e0e0;
+    color: #121212;
+  }
+
+  body:has(.theme-switch:checked) .main-container {
+    background: #121212;
+  }
+
+  body:has(.theme-switch:checked) .hero-title,
+  body:has(.theme-switch:checked) .section-title,
+  body:has(.theme-switch:checked) .resume-cta-title {
+    color: #e0e0e0;
+  }
+
+  body:has(.theme-switch:checked) .hero-desc,
+  body:has(.theme-switch:checked) .section p,
+  body:has(.theme-switch:checked) .resume-cta-text,
+  body:has(.theme-switch:checked) .contact-text {
+    color: #b0b0b0;
+  }
+
+  body:has(.theme-switch:checked) .explore-btn {
+    background: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #333;
+  }
+
+  body:has(.theme-switch:checked) .explore-btn:hover {
+    background: #e0e0e0;
+    color: #121212;
+  }
+
+  body:has(.theme-switch:checked) .skill-badge {
+    background: #1e1e1e;
+    color: #e0e0e0;
+  }
+
+  body:has(.theme-switch:checked) .project-card {
+    background: linear-gradient(135deg, #1e1e1e 60%, #2a2a2a 100%);
+    border: 1.5px solid #333;
+  }
+
+  body:has(.theme-switch:checked) .project-card:hover {
+    border-color: #555;
+  }
+
+  body:has(.theme-switch:checked) .project-title {
+    color: #e0e0e0;
+  }
+
+  body:has(.theme-switch:checked) .project-desc {
+    color: #b0b0b0;
+  }
+
+  body:has(.theme-switch:checked) .cert-card {
+    background: #1e1e1e;
+    border: 1px solid #333;
+  }
+
+  body:has(.theme-switch:checked) .cert-title {
+    color: #e0e0e0;
+  }
+
+  body:has(.theme-switch:checked) .resume-cta {
+    background: #1e1e1e;
+  }
+
+  body:has(.theme-switch:checked) .resume-btn-lg {
+    background: #e0e0e0;
+    color: #121212;
+  }
+
+  body:has(.theme-switch:checked) .resume-btn-lg:hover {
+    background: #f0f0f0;
+  }
+
+  body:has(.theme-switch:checked) .contact-link {
+    background: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #333;
+  }
+
+  body:has(.theme-switch:checked) .contact-link:hover {
+    background: #e0e0e0;
+    color: #121212;
+  }
+
+  body:has(.theme-switch:checked) .footer {
+    background: #1e1e1e;
+    border-top: 1px solid #333;
+  }
+
+  body:has(.theme-switch:checked) .footer-text {
+    color: #b0b0b0;
+  }
+
+  body:has(.theme-switch:checked) .tech-accent {
+    color: #e0e0e0;
+  }
+}
+
+/* Responsive adjustments for dark mode toggle */
+@media (max-width: 640px) {
+  .theme-toggle {
+    margin-left: 0.5rem;
+    width: 40px;
+    height: 20px;
+  }
+  
+  .toggle-slider:before {
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+  }
+  
+  .theme-switch:checked + .toggle-slider:before {
+    transform: translateX(20px);
+  }
+}
