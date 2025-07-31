@@ -2,7 +2,7 @@
    Alessandro Gallo - AWS DevOps Engineer Portfolio
    ========================================================================== */
 
-/* Improved scrollbar for better UX */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
