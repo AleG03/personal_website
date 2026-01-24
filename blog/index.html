@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Writing - Alessandro Gallo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Blog posts about AWS, DevOps, infrastructure automation, and cloud cost optimization.">
+    <meta name="author" content="Alessandro Gallo">
+    <link rel="icon" href="../assets/favicon/favicon.svg" type="image/svg+xml">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Charter, 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', Georgia, serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #2c2c2c;
+            background: #f9f7f4;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.03em;
+            color: #1a1a1a;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 400;
+            margin: 3rem 0 1.5rem;
+            color: #1a1a1a;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 2.5rem 0 0.75rem;
+            color: #2c2c2c;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: #4a4a4a;
+        }
+
+        a {
+            color: #2c2c2c;
+            text-decoration: underline;
+            text-decoration-color: #d4cfc8;
+            text-underline-offset: 3px;
+        }
+
+        a:hover {
+            color: #8b6f47;
+            text-decoration-color: #8b6f47;
+        }
+
+        .meta {
+            color: #7a7a7a;
+            font-size: 1rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #4a4a4a;
+            margin-bottom: 5rem;
+        }
+
+        .back-link {
+            margin-bottom: 3rem;
+            display: inline-block;
+        }
+
+        .back-link:before {
+            content: "← ";
+            color: #8b6f47;
+        }
+
+        article {
+            padding-left: 2rem;
+            border-left: 1px solid #e0ddd8;
+            margin-bottom: 4rem;
+        }
+
+        article h3 {
+            margin-top: 0;
+        }
+
+        footer {
+            margin-top: 6rem;
+            padding-left: 2rem;
+            border-left: 1px solid #e0ddd8;
+            color: #999;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="../index.html" class="back-link">Back to home</a>
+
+    <header>
+        <h1>Writing</h1>
+        <p class="intro">What drives me is the challenge of making cloud infrastructure both simple and practical.
+            I believe the best solutions are those that not only work today but remain maintainable and cost-effective
+            as they scale. Here, I share patterns, mistakes, and insights from real-world projects.</p>
+    </header>
+
+    <article>
+        <h3><a href="vpc-traffic-mirroring-validation.html">Beyond Staging: Validating Code with Real Production Traffic
+                using Amazon VPC Traffic Mirroring</a></h3>
+        <p class="meta">July 15, 2025</p>
+        <p>Learn how to transparently shadow live production traffic to validate new code in isolation. We discovered a
+            subtle query bug that synthetic tests missed, leading to a much more confident deployment.</p>
+    </article>
+
+    <article>
+        <h3><a href="handling-multiple-domains-redirects.html">Handling multiple domains redirects using Amazon S3 and
+                Amazon CloudFront</a></h3>
+        <p class="meta">September 12, 2024</p>
+        <p>Explore how to use Amazon S3 and Amazon CloudFront to set up smart redirects without maintaining a web
+            server. Learn how to retire legacy servers and use S3 metadata for granular redirect management.</p>
+    </article>
+
+    <!-- Template for future posts:
+  <article>
+    <h3><a href="post-slug.html">Post Title</a></h3>
+    <p class="meta">Month Day, Year</p>
+    <p>Brief description of the post...</p>
+  </article>
+  -->
+
+    <footer>
+        <p>© 2025 Alessandro Gallo. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

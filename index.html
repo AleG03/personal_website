@@ -2,218 +2,235 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <title>AWS DevOps Portfolio - Alessandro</title>
+  <meta charset="utf-8">
+  <title>Alessandro Gallo - AWS DevOps Engineer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Alessandro Gallo's AWS DevOps Engineer portfolio, specializing in cloud infrastructure automation, cost optimization, and scalable solutions with proven results.">
-  <meta name="keywords"
-    content="AWS DevOps, Cloud Infrastructure, AWS, Azure, CI/CD, Infrastructure as Code, Cost Optimization, Terraform, Kubernetes">
+    content="Alessandro Gallo's AWS DevOps Engineer portfolio, specializing in cloud infrastructure automation, cost optimization, and scalable solutions.">
   <meta name="author" content="Alessandro Gallo">
-  <link rel="icon" href="data:,">
-
-  <!-- Preconnect to external domains -->
-  <link rel="preconnect" href="https://github.com">
-  <link rel="preconnect" href="https://linkedin.com">
-
-  <!-- Theme color for browser UI -->
-  <meta name="theme-color" content="#000000">
-  <link rel="manifest" href="manifest.json">
-
-  <!-- Performance optimizations -->
-  <link rel="preload" href="styles.css" as="style">
-  <link rel="preload" href="AlessandroGallo.jpg" as="image">
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- Open Graph / Social Media -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Alessandro Gallo - AWS DevOps Engineer">
-  <meta property="og:description"
-    content="AWS DevOps Engineer specializing in cloud infrastructure automation, cost optimization, and scalable solutions with proven results.">
-  <meta property="og:url" content="https://alessandrogallo.eu.org">
-  <meta property="og:image" content="https://alessandrogallo.eu.org/AlessandroGallo.jpg">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Alessandro Gallo - AWS DevOps Engineer">
-  <meta name="twitter:description"
-    content="AWS DevOps Engineer specializing in cloud infrastructure automation and cost optimization.">
-  <meta name="twitter:image" content="https://alessandrogallo.eu.org/AlessandroGallo.jpg">
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Alessandro Gallo",
-    "jobTitle": "AWS DevOps Engineer",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "beSharp spa"
-    },
-    "url": "https://alessandrogallo.eu.org",
-    "image": "https://alessandrogallo.eu.org/AlessandroGallo.jpg",
-    "sameAs": [
-      "https://github.com/AleG03",
-      "https://linkedin.com/in/alessandro-gallo-cassarino-666607228"
-    ],
-    "knowsAbout": ["AWS", "DevOps", "Cloud Infrastructure", "Terraform", "Kubernetes", "Cost Optimization"],
-    "alumniOf": {
-      "@type": "EducationalOrganization",
-      "name": "ITS Angelo Rizzoli"
+  <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-  }
-  </script>
+
+    body {
+      font-family: Charter, 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.8;
+      color: #2c2c2c;
+      background: #f9f7f4;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    img {
+      border-radius: 50%;
+      width: 96px;
+      height: 96px;
+      margin-bottom: 1.5rem;
+      border: 2px solid #e0ddd8;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.03em;
+      color: #1a1a1a;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      color: #1a1a1a;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 2.5rem 0 0.75rem;
+      color: #2c2c2c;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+      color: #4a4a4a;
+    }
+
+    a {
+      color: #2c2c2c;
+      text-decoration: underline;
+      text-decoration-color: #d4cfc8;
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      color: #8b6f47;
+      text-decoration-color: #8b6f47;
+    }
+
+    .meta {
+      color: #7a7a7a;
+      font-size: 1rem;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+
+    .intro {
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: #4a4a4a;
+      margin-bottom: 5rem;
+    }
+
+    section {
+      margin-bottom: 5rem;
+      padding-left: 2rem;
+      border-left: 1px solid #e0ddd8;
+    }
+
+    ul {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.7rem;
+      padding-left: 1.2rem;
+      position: relative;
+      color: #4a4a4a;
+    }
+
+    li:before {
+      content: "• ";
+      position: absolute;
+      left: 0;
+      color: #d4cfc8;
+    }
+
+    .contact a {
+      margin-right: 1.5rem;
+      font-weight: 500;
+    }
+
+    a[href^="http"]:after {
+      content: " ↗";
+      font-size: 0.85em;
+      opacity: 0.6;
+    }
+
+    .resume-link:before {
+      content: "→ ";
+      color: #8b6f47;
+    }
+
+    footer {
+      margin-top: 6rem;
+      padding-left: 2rem;
+      border-left: 1px solid #e0ddd8;
+      color: #999;
+      font-size: 0.85rem;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="topbar">
-    <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#contact">Contact</a>
-      <a class="resume-btn" href="#resume-cta">Resume</a>
-    </nav>
-  </div>
-  <div class="main-container">
-    <main>
-      <section class="hero" id="hero">
-        <img src="AlessandroGallo.jpg" alt="Alessandro Gallo" class="hero-img" loading="lazy" width="128"
-          height="128" />
-        <h1 class="hero-title">
-          <span class="tech-accent">Alessandro</span><br />
-          AWS DevOps Engineer
-        </h1>
-        <h2 class="hero-subtitle">Senior Consultant in beSharp spa</h2>
-        <p class="hero-desc">
-          I specialize in automating and optimizing cloud infrastructure to enhance application performance and
-          reliability, ensuring seamless deployment and robust operations.
-        </p>
-        <a class="explore-btn" href="#projects">
-          Explore My Work
-        </a>
-      </section>
-      <div class="section about-space" id="about">
-        <h2 class="section-title">About Me</h2>
-        <p>
-          I am a highly motivated DevOps Engineer with experience in designing, implementing, and managing cloud-based
-          solutions. My expertise lies in
-          automating infrastructure, optimizing CI/CD pipelines, and ensuring high availability and scalability of
-          applications. I am proficient in various cloud platforms,
-          scripting languages, and configuration management tools. I thrive in collaborative environments and am
-          passionate about leveraging technology to solve complex problems.
-        </p>
-      </div>
-      <div class="section" id="skills">
-        <h2 class="section-title">Core Skills</h2>
-        <div class="skills-list">
-          <span class="skill-badge">AWS (EC2, S3, Lambda, RDS, VPC, IAM, CloudWatch)</span>
-          <span class="skill-badge">Infrastructure as Code (Terraform, CDK, CloudFormation)</span>
-          <span class="skill-badge">Containerization (Docker, Kubernetes)</span>
-          <span class="skill-badge">CI/CD (Jenkins, GitLab CI, GitHub Actions, AWS CodePipeline)</span>
-          <span class="skill-badge">Cost Optimization & FinOps</span>
-          <span class="skill-badge">Scripting (Python, Bash, PowerShell, SQL)</span>
-          <span class="skill-badge">Monitoring (Prometheus, Grafana, ELK Stack)</span>
-          <span class="skill-badge">Multi-Cloud (Azure, Oracle Cloud)</span>
-          <span class="skill-badge">Security & Networking</span>
-        </div>
-      </div>
-      <div class="section" id="projects">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
-          <div class="project-card">
-            <div class="project-content">
-              <h3 class="project-title">Data Platform (DevOps)</h3>
-              <p class="project-desc">Architected a secure, serverless ETL data platform using AWS Glue, S3, and
-                Redshift for an international
-                humanitarian organization. Implemented a Single Point of Truth architecture, reducing manual analyst
-                workload by 30% while ensuring robust data processing in sensitive environments.</p>
-            </div>
-          </div>
-          <div class="project-card">
-            <div class="project-content">
-              <h3 class="project-title">FinOps Assessment (Cloud Finance)</h3>
-              <p class="project-desc">Led a comprehensive cloud financial assessment analyzing EC2, S3, and data
-                transfer spending
-                for a humanitarian organization. Delivered a strategic cost optimization plan that reduced monthly cloud
-                spending by 65% through rightsizing, storage tiering, and Savings Plans implementation.</p>
-            </div>
-          </div>
-          <div class="project-card">
-            <div class="project-content">
-              <h3 class="project-title">Web Staticization & Edge Optimization (Cloud Operations)</h3>
-              <p class="project-desc">Engineered a CI/CD pipeline using AWS CodePipeline to convert a dynamic website to
-                static hosting on S3.
-                Implemented CloudFront distribution and Lambda@Edge functions, reducing global average page load times
-                by over 70% and dramatically improving user experience worldwide.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="section" id="certifications">
-        <h2 class="section-title">Certifications</h2>
-        <div class="certifications-grid">
-          <div class="cert-card">
-            <h3 class="cert-title">AWS Certified Solutions Architect Professional</h3>
-          </div>
-          <div class="cert-card">
-            <h3 class="cert-title">AWS Certified Developer Associate</h3>
-          </div>
-          <div class="cert-card">
-            <h3 class="cert-title">AWS Certified SysOps Administrator Associate</h3>
-          </div>
-          <div class="cert-card">
-            <h3 class="cert-title">AWS Certified Solutions Architect Associate</h3>
-          </div>
-          <div class="cert-card">
-            <h3 class="cert-title">Microsoft Azure Fundamentals</h3>
-          </div>
-          <div class="cert-card">
-            <h3 class="cert-title">Cisco Security and Network Defense Certified</h3>
-          </div>
-        </div>
-      </div>
-      <div class="section resume-cta" id="resume-cta">
-        <h2 class="resume-cta-title">Ready to Dive Deeper?</h2>
-        <p class="resume-cta-text">
-          Take a look at my resume to get a comprehensive overview of my skills, experience, and achievements.
-        </p>
-        <a href="AlessandroGallo_CV.pdf" class="resume-btn-lg" target="_blank" rel="noopener">
-          Resume
-        </a>
-      </div>
-      <div class="section" id="contact">
-        <h2 class="section-title">Let's Connect</h2>
-        <p class="contact-text">
-          Interested in discussing cloud infrastructure, DevOps strategies, or potential collaborations?
-          I'm always open to connecting with fellow professionals and exploring new opportunities.
-        </p>
-        <div class="contact-list">
-          <a class="contact-link" href="mailto:gc.ale03@gmail.com" aria-label="Send email to Alessandro">
-            Email Me
-          </a>
-          <a class="contact-link" href="https://github.com/AleG03" rel="noopener noreferrer" target="_blank"
-            aria-label="Visit Alessandro's GitHub profile">
-            GitHub
-          </a>
-          <a class="contact-link" href="https://linkedin.com/in/alessandro-gallo-cassarino-666607228"
-            rel="noopener noreferrer" target="_blank" aria-label="Visit Alessandro's LinkedIn profile">
-            LinkedIn
-          </a>
-        </div>
-      </div>
-    </main>
-  </div>
-  <footer class="footer">
-    <div class="footer-content">
-      <p class="footer-text">
-        © 2025 Alessandro. All rights reserved.
-        <br />
-        Built with HTML, CSS, and <span class="tech-accent">passion</span>.
-      </p>
-    </div>
+  <header>
+    <img src="assets/profile/alessandro.jpg" alt="Alessandro Gallo" width="96" height="96">
+    <h1>Alessandro Gallo</h1>
+    <p class="meta">AWS DevOps Engineer · Senior Consultant at beSharp spa</p>
+  </header>
+
+  <section>
+    <h2>About</h2>
+    <p>DevOps Engineer with a strong focus on designing, implementing, and operating cloud-based solutions.
+I specialize in infrastructure automation, CI/CD optimization, and building highly available, scalable applications.</p>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <ul>
+      <li>AWS (EC2, S3, Lambda, RDS, VPC, IAM, CloudWatch)</li>
+      <li>Infrastructure as Code (Terraform, CDK, CloudFormation)</li>
+      <li>Containerization (Docker, Kubernetes)</li>
+      <li>CI/CD (Jenkins, GitLab CI, GitHub Actions, AWS CodePipeline)</li>
+      <li>Cost Optimization & FinOps</li>
+      <li>Scripting (Python, Bash, PowerShell, SQL)</li>
+      <li>Monitoring (Prometheus, Grafana, ELK Stack)</li>
+      <li>Multi-Cloud (Azure, Oracle Cloud)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Featured Projects</h2>
+
+    <h3>Data Platform (DevOps)</h3>
+    <p>Architected a secure, serverless ETL data platform using AWS Glue, S3, and Redshift for an international
+      humanitarian organization. Implemented a Single Point of Truth architecture, reducing manual analyst workload by
+      30%.</p>
+
+    <h3>FinOps Assessment (Cloud Finance)</h3>
+    <p>Led a comprehensive cloud financial assessment analyzing EC2, S3, and data transfer spending. Delivered a
+      strategic cost optimization plan that reduced monthly cloud spending by 65% through rightsizing, storage tiering,
+      and Savings Plans implementation.</p>
+
+    <h3>Web Staticization & Edge Optimization</h3>
+    <p>Engineered a CI/CD pipeline using AWS CodePipeline to convert a dynamic website to static hosting on S3.
+      Implemented CloudFront distribution and Lambda@Edge functions, reducing global average page load times by over
+      70%.</p>
+  </section>
+
+  <section>
+    <h2>Certifications</h2>
+    <ul>
+      <li>AWS Certified Solutions Architect Professional</li>
+      <li>AWS Certified Developer Associate</li>
+      <li>AWS Certified SysOps Administrator Associate</li>
+      <li>AWS Certified Solutions Architect Associate</li>
+      <li>Microsoft Azure Fundamentals</li>
+      <li>Cisco Security and Network Defense Certified</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Writing</h2>
+    <h3><a href="blog/vpc-traffic-mirroring-validation.html">Beyond Staging: VPC Traffic Mirroring</a></h3>
+    <p class="meta">July 2025</p>
+    <p>How we used Amazon VPC Traffic Mirroring to validate a critical refactor with real production traffic without
+      risk.</p>
+
+    <h3><a href="blog/handling-multiple-domains-redirects.html">Multiple Domains Redirects on AWS</a></h3>
+    <p class="meta">September 2024</p>
+    <p>Using Amazon S3 and CloudFront to set up smart redirects for legacy domains without maintaining web servers.</p>
+
+    <p><a href="blog/index.html">More posts →</a></p>
+  </section>
+
+  <section>
+    <h2>Resume</h2>
+    <p>Take a look at my <a href="assets/docs/resume.pdf" class="resume-link" target="_blank" rel="noopener">resume</a>
+      to get a comprehensive overview of my skills, experience, and achievements.</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Interested in discussing cloud infrastructure, DevOps strategies, or potential collaborations? I'm always open to
+      connecting with fellow professionals.</p>
+    <p class="contact">
+      <a href="mailto:gc.ale03@gmail.com">Email</a>
+      <a href="https://github.com/AleG03" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/alessandro-gallo-cassarino-666607228" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
+  </section>
+
+  <footer>
+    <p>© 2025 Alessandro Gallo. All rights reserved.</p>
   </footer>
 </body>
 
