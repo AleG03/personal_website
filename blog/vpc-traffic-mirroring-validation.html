@@ -32,12 +32,13 @@
             font-family: Charter, 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', Georgia, serif;
             font-size: 18px;
             line-height: 1.8;
-            color: #2c2c2c;
+            color: #1a1a1a;
             background: #f9f7f4;
             max-width: 680px;
             margin: 0 auto;
             padding: 4rem 2rem;
-            -webkit-font-smoothing: antialiased;
+            -webkit-font-smoothing: subpixel-antialiased;
+            -moz-osx-font-smoothing: auto;
         }
 
         header {
@@ -76,7 +77,7 @@
         a {
             color: #2c2c2c;
             text-decoration: underline;
-            text-decoration-color: #d4cfc8;
+            text-decoration-color: #a6a6a6;
             text-underline-offset: 3px;
             transition: all 0.2s ease;
         }
@@ -87,7 +88,7 @@
         }
 
         .meta {
-            color: #7a7a7a;
+            color: #595959;
             font-size: 1rem;
             font-style: italic;
             margin-bottom: 2rem;
@@ -159,7 +160,7 @@
             margin-top: 6rem;
             padding-left: 2rem;
             border-left: 1px solid #e0ddd8;
-            color: #999;
+            color: #595959;
             font-size: 0.85rem;
         }
 
@@ -187,132 +188,165 @@
         <p class="meta">July 15, 2025 · Alessandro Gallo</p>
     </header>
 
-    <article>
-        <p>We've all been there: Unit tests are green, integration tests pass with flying colors, and even the most
-            rigorous synthetic load tests show the new code is ready. Confidence is high. Yet, a persistent question
-            often lingers in the background:</p>
-        <p><em>"What will happen with real users? With their messy, unpredictable,
-                I-didn't-even-know-the-API-could-do-that kind of traffic?"</em></p>
+    <main>
+        <article>
+            <p>We've all been there: Unit tests are green, integration tests pass with flying colors, and even the most
+                rigorous synthetic load tests show the new code is ready. Confidence is high. Yet, a persistent question
+                often lingers in the background:</p>
+            <p><em>"What will happen with real users? With their messy, unpredictable,
+                    I-didn't-even-know-the-API-could-do-that kind of traffic?"</em></p>
 
-        <img src="../assets/blog/vpc-mirroring/intro.jpg" alt="Beyond Staging: VPC Traffic Mirroring Intro">
+            <img src="../assets/blog/vpc-mirroring/intro.jpg" alt="Beyond Staging: VPC Traffic Mirroring Intro">
 
-        <p>That question was particularly resonant for us. We had just completed a significant refactoring of a critical
-            application, the kind whose slightest hiccup sends ripples across the business.</p>
+            <p>That question was particularly resonant for us. We had just completed a significant refactoring of a
+                critical
+                application, the kind whose slightest hiccup sends ripples across the business.</p>
 
-        <h2>The Scenario: Our Production Architecture</h2>
-        <p>Our setup is a common AWS pattern: an AWS Application Load Balancer distributes traffic across a fleet of
-            Amazon EC2 instances running our service. The service's main job is to query a MongoDB database and return
-            results.</p>
+            <h2>The Scenario: Our Production Architecture</h2>
+            <p>Our setup is a common AWS pattern: an AWS Application Load Balancer distributes traffic across a fleet of
+                Amazon EC2 instances running our service. The service's main job is to query a MongoDB database and
+                return
+                results.</p>
 
-        <img src="../assets/blog/vpc-mirroring/production_diagram.png" alt="Simplified diagram of the production flow">
+            <img src="../assets/blog/vpc-mirroring/production_diagram.png"
+                alt="Simplified diagram of the production flow">
 
-        <h2>The "What If": Replicating Production Without Risk</h2>
-        <p>The concern sparked a caffeine-fueled brainstorming session. "What if," someone proposed, "we could
-            transparently shadow live production traffic and send it to our new code, completely isolated from the
-            actual production environment?"</p>
+            <h2>The "What If": Replicating Production Without Risk</h2>
+            <p>The concern sparked a caffeine-fueled brainstorming session. "What if," someone proposed, "we could
+                transparently shadow live production traffic and send it to our new code, completely isolated from the
+                actual production environment?"</p>
 
-        <p>While ambitious, AWS offers a capability adaptable to this challenge: <strong>Amazon VPC Traffic
-                Mirroring</strong>.</p>
+            <p>While ambitious, AWS offers a capability adaptable to this challenge: <strong>Amazon VPC Traffic
+                    Mirroring</strong>.</p>
 
-        <p>Here's the concept: Amazon VPC Traffic Mirroring acts like a one-way mirror for the network. Production
-            traffic flows normally on one side, handling real user requests without interruption. On the other side, an
-            exact copy of that traffic is sent to a designated target, like an AWS Network Load Balancer or a network
-            interface. The critical detail is how it sends this copy. The mirrored packets are encapsulated in VXLAN, a
-            network virtualization protocol that wraps layer-2 Ethernet frames into UDP packets for transport across IP
-            networks. This prevents them from being treated as regular network traffic and interfering with anything.
-            However, it also means our test application can't process these VXLAN packets as standard HTTP requests.</p>
+            <p>Here's the concept: Amazon VPC Traffic Mirroring acts like a one-way mirror for the network. Production
+                traffic flows normally on one side, handling real user requests without interruption. On the other side,
+                an
+                exact copy of that traffic is sent to a designated target, like an AWS Network Load Balancer or a
+                network
+                interface. The critical detail is how it sends this copy. The mirrored packets are encapsulated in
+                VXLAN, a
+                network virtualization protocol that wraps layer-2 Ethernet frames into UDP packets for transport across
+                IP
+                networks. This prevents them from being treated as regular network traffic and interfering with
+                anything.
+                However, it also means our test application can't process these VXLAN packets as standard HTTP requests.
+            </p>
 
-        <p>To bridge this gap, we needed an utility to:</p>
-        <ul>
-            <li>Receive the VXLAN-encapsulated packets.</li>
-            <li>Unwrap them to extract the original production requests.</li>
-            <li>Forward the raw requests to our test environment.</li>
-        </ul>
+            <p>To bridge this gap, we needed an utility to:</p>
+            <ul>
+                <li>Receive the VXLAN-encapsulated packets.</li>
+                <li>Unwrap them to extract the original production requests.</li>
+                <li>Forward the raw requests to our test environment.</li>
+            </ul>
 
-        <p>With this approach, the production flow remains untouched and unaware, while our test environment receives a
-            real-time, risk-free replica of live traffic. It wasn't a turnkey solution, but with the right tooling for
-            decapsulation, it was a powerful and safe way to validate our new code against reality.</p>
+            <p>With this approach, the production flow remains untouched and unaware, while our test environment
+                receives a
+                real-time, risk-free replica of live traffic. It wasn't a turnkey solution, but with the right tooling
+                for
+                decapsulation, it was a powerful and safe way to validate our new code against reality.</p>
 
-        <h2>Building Our Doppelgänger Environment</h2>
-        <p>With a clear strategy, we got to work.</p>
+            <h2>Building Our Doppelgänger Environment</h2>
+            <p>With a clear strategy, we got to work.</p>
 
-        <p><strong>First, we built an isolated replica.</strong> We provisioned a complete, parallel stack: new Amazon
-            EC2 instances running the refactored code, a dedicated "shadow" AWS Application Load Balancer, and a fresh
-            MongoDB instance seeded with a recent production snapshot. This was our high-fidelity testing ground.</p>
+            <p><strong>First, we built an isolated replica.</strong> We provisioned a complete, parallel stack: new
+                Amazon
+                EC2 instances running the refactored code, a dedicated "shadow" AWS Application Load Balancer, and a
+                fresh
+                MongoDB instance seeded with a recent production snapshot. This was our high-fidelity testing ground.
+            </p>
 
-        <p><strong>Second, we deployed our mirroring environment.</strong> We set up an AWS Network Load Balancer in
-            front of an AWS Auto Scaling group of Amazon EC2 instances. On these instances, we installed a lightweight
-            open-source tool (<a href="https://github.com/beAle01/traffic-mirroring" target="_blank" rel="noopener">like
-                this one</a>) to handle the VXLAN decapsulation and forward the traffic to our shadow
-            AWS ALB. This gateway was the bridge between the mirrored world and our test environment.</p>
+            <p><strong>Second, we deployed our mirroring environment.</strong> We set up an AWS Network Load Balancer in
+                front of an AWS Auto Scaling group of Amazon EC2 instances. On these instances, we installed a
+                lightweight
+                open-source tool (<a href="https://github.com/beAle01/traffic-mirroring" target="_blank"
+                    rel="noopener">like
+                    this one</a>) to handle the VXLAN decapsulation and forward the traffic to our shadow
+                AWS ALB. This gateway was the bridge between the mirrored world and our test environment.</p>
 
-        <p><strong>Third, we identified the traffic source.</strong> We identified the network interfaces (ENIs) of our
-            production Amazon EC2 instances as the Mirror Source. This is where the traffic we wanted to copy
-            originated.</p>
+            <p><strong>Third, we identified the traffic source.</strong> We identified the network interfaces (ENIs) of
+                our
+                production Amazon EC2 instances as the Mirror Source. This is where the traffic we wanted to copy
+                originated.</p>
 
-        <p>We didn't need to mirror all traffic; operational chatter would only add noise and cost. Our service operates
-            on port 8080, so we created a simple <strong>Mirror Filter</strong>: "Only mirror TCP traffic destined for
-            port 8080." This focused our experiment and, crucially, helped manage costs.</p>
+            <p>We didn't need to mirror all traffic; operational chatter would only add noise and cost. Our service
+                operates
+                on port 8080, so we created a simple <strong>Mirror Filter</strong>: "Only mirror TCP traffic destined
+                for
+                port 8080." This focused our experiment and, crucially, helped manage costs.</p>
 
-        <img src="../assets/blog/vpc-mirroring/filter.png" alt="Mirror Filter Configuration">
+            <img src="../assets/blog/vpc-mirroring/filter.png" alt="Mirror Filter Configuration">
 
-        <p>Finally, we created a <strong>Mirror Session</strong> to connect the source, the filter, and our gateway
-            target. With the configuration complete, we activated the session.</p>
+            <p>Finally, we created a <strong>Mirror Session</strong> to connect the source, the filter, and our gateway
+                target. With the configuration complete, we activated the session.</p>
 
-        <img src="../assets/blog/vpc-mirroring/final_diagram.png"
-            alt="Diagram of the final architecture with traffic mirroring">
+            <img src="../assets/blog/vpc-mirroring/final_diagram.png"
+                alt="Diagram of the final architecture with traffic mirroring">
 
-        <h2>The Moment of Validation</h2>
-        <p>The results were immediate and illuminating. Watching our CloudWatch dashboards, we saw the CPU and Memory
-            metrics for the new test service begin to fluctuate, perfectly mimicking the rhythm of the production
-            environment. Our shadow application was <strong>alive</strong>, processing a real-time replica of production
-            load.</p>
+            <h2>The Moment of Validation</h2>
+            <p>The results were immediate and illuminating. Watching our CloudWatch dashboards, we saw the CPU and
+                Memory
+                metrics for the new test service begin to fluctuate, perfectly mimicking the rhythm of the production
+                environment. Our shadow application was <strong>alive</strong>, processing a real-time replica of
+                production
+                load.</p>
 
-        <img src="../assets/blog/vpc-mirroring/metrics.png" alt="CloudWatch metrics of the shadow application">
+            <img src="../assets/blog/vpc-mirroring/metrics.png" alt="CloudWatch metrics of the shadow application">
 
-        <p>This is where the true value emerged.</p>
+            <p>This is where the true value emerged.</p>
 
-        <p>We let the mirror run for a full day, capturing a complete cycle of peak and off-peak traffic. Analyzing the
-            application logs and database metrics revealed two critical insights:</p>
-        <ul>
-            <li><strong>A Subtle Query Bug:</strong> Our refactored code had inadvertently introduced an N+1 query
-                pattern. It was performant enough to fly under the radar in synthetic tests, but under the diverse load
-                of real users, it was generating thousands of small, unnecessary database calls. This would have been
-                nearly impossible to spot in a traditional staging environment.</li>
-            <li><strong>Performance Confirmation:</strong> After we fixed the bug and redeployed the shadow service, the
-                new metrics provided undeniable proof: our refactor was, in fact, significantly more efficient. CPU
-                utilization was lower, and the database load dropped noticeably.</li>
-        </ul>
+            <p>We let the mirror run for a full day, capturing a complete cycle of peak and off-peak traffic. Analyzing
+                the
+                application logs and database metrics revealed two critical insights:</p>
+            <ul>
+                <li><strong>A Subtle Query Bug:</strong> Our refactored code had inadvertently introduced an N+1 query
+                    pattern. It was performant enough to fly under the radar in synthetic tests, but under the diverse
+                    load
+                    of real users, it was generating thousands of small, unnecessary database calls. This would have
+                    been
+                    nearly impossible to spot in a traditional staging environment.</li>
+                <li><strong>Performance Confirmation:</strong> After we fixed the bug and redeployed the shadow service,
+                    the
+                    new metrics provided undeniable proof: our refactor was, in fact, significantly more efficient. CPU
+                    utilization was lower, and the database load dropped noticeably.</li>
+            </ul>
 
-        <p>This was the crucial shift: we moved from confident assumptions to concrete proof, validated against
-            real-world chaos, all without ever putting a single user's experience at risk. The subsequent production
-            deployment was the calmest, most confident one we'd ever done.</p>
+            <p>This was the crucial shift: we moved from confident assumptions to concrete proof, validated against
+                real-world chaos, all without ever putting a single user's experience at risk. The subsequent production
+                deployment was the calmest, most confident one we'd ever done.</p>
 
-        <h2>Key Takeaways from Traffic Mirroring</h2>
-        <p>This technique has become a cornerstone of our strategy for high-stakes deployments. It doesn't replace
-            standard testing, but serves as the ultimate pre-flight check.</p>
+            <h2>Key Takeaways from Traffic Mirroring</h2>
+            <p>This technique has become a cornerstone of our strategy for high-stakes deployments. It doesn't replace
+                standard testing, but serves as the ultimate pre-flight check.</p>
 
-        <h3>Cost management is crucial</h3>
-        <p>Mirroring is priced per gigabyte of traffic processed. Be <em>frugal</em>. Use aggressive filters and run
-            experiments for specific, limited durations to keep costs in check.</p>
+            <h3>Cost management is crucial</h3>
+            <p>Mirroring is priced per gigabyte of traffic processed. Be <em>frugal</em>. Use aggressive filters and run
+                experiments for specific, limited durations to keep costs in check.</p>
 
-        <h3>Security is non-negotiable</h3>
-        <p>The mirrored traffic is an exact copy of production data. In our case, TLS was terminated at the production
-            load balancer, meaning the mirrored traffic was unencrypted. While useful for analysis, this demands that
-            your shadow environment be in a secure, private, and rigorously controlled VPC. <strong>Treat mirrored data
-                with the same diligence as production data</strong>.</p>
+            <h3>Security is non-negotiable</h3>
+            <p>The mirrored traffic is an exact copy of production data. In our case, TLS was terminated at the
+                production
+                load balancer, meaning the mirrored traffic was unencrypted. While useful for analysis, this demands
+                that
+                your shadow environment be in a secure, private, and rigorously controlled VPC. <strong>Treat mirrored
+                    data
+                    with the same diligence as production data</strong>.</p>
 
-        <h3>A finisher, not a replacement</h3>
-        <p>This is a late-stage validation tool, not a substitute for proper unit tests, integration tests, and a solid
-            staging environment. Think of it as the final exam, not the homework.</p>
+            <h3>A finisher, not a replacement</h3>
+            <p>This is a late-stage validation tool, not a substitute for proper unit tests, integration tests, and a
+                solid
+                staging environment. Think of it as the final exam, not the homework.</p>
 
-        <p>Amazon VPC Traffic Mirroring fundamentally changed how we manage deployment risk. It bridged the daunting gap
-            between our expectations and production reality. We stopped merely hoping our code would perform under
-            pressure, we gained the ability to know it would.</p>
+            <p>Amazon VPC Traffic Mirroring fundamentally changed how we manage deployment risk. It bridged the daunting
+                gap
+                between our expectations and production reality. We stopped merely hoping our code would perform under
+                pressure, we gained the ability to know it would.</p>
 
-        <p>Next time you're facing a critical launch, ask yourself: what if you could see how the system behaves with
-            live traffic, before it goes live?</p>
-    </article>
+            <p>Next time you're facing a critical launch, ask yourself: what if you could see how the system behaves
+                with
+                live traffic, before it goes live?</p>
+        </article>
+    </main>
 
     <footer>
         <p>© 2025 Alessandro Gallo. All rights reserved.</p>

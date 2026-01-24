@@ -29,12 +29,13 @@
       font-family: Charter, 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', Georgia, serif;
       font-size: 18px;
       line-height: 1.8;
-      color: #2c2c2c;
+      color: #1a1a1a;
       background: #f9f7f4;
       max-width: 680px;
       margin: 0 auto;
       padding: 4rem 2rem;
-      -webkit-font-smoothing: antialiased;
+      -webkit-font-smoothing: subpixel-antialiased;
+      -moz-osx-font-smoothing: auto;
     }
 
     header {
@@ -82,7 +83,7 @@
     a {
       color: #2c2c2c;
       text-decoration: underline;
-      text-decoration-color: #d4cfc8;
+      text-decoration-color: #a6a6a6;
       text-underline-offset: 3px;
       transition: all 0.2s ease;
     }
@@ -93,7 +94,7 @@
     }
 
     .meta {
-      color: #7a7a7a;
+      color: #595959;
       font-size: 1rem;
       font-style: italic;
       margin-bottom: 1.5rem;
@@ -127,7 +128,7 @@
       content: "•";
       position: absolute;
       left: 0;
-      color: #d4cfc8;
+      color: #8c8c8c;
     }
 
     .contact a {
@@ -150,7 +151,7 @@
       margin-top: 6rem;
       padding-left: 2rem;
       border-left: 1px solid #e0ddd8;
-      color: #999;
+      color: #595959;
       font-size: 0.85rem;
     }
 
@@ -177,88 +178,95 @@
     <p class="meta">AWS DevOps Engineer · Senior Consultant at beSharp spa</p>
   </header>
 
-  <section>
-    <h2>About</h2>
-    <p>DevOps Engineer with a strong focus on designing, implementing, and operating cloud-based solutions.
-      I specialize in infrastructure automation, CI/CD optimization, and building highly available, scalable
-      applications.</p>
-  </section>
+  <main>
+    <section>
+      <h2>About</h2>
+      <p>DevOps Engineer with a strong focus on designing, implementing, and operating cloud-based solutions.
+        I specialize in infrastructure automation, CI/CD optimization, and building highly available, scalable
+        applications.</p>
+    </section>
 
-  <section>
-    <h2>Skills</h2>
-    <ul>
-      <li>AWS (EC2, S3, Lambda, RDS, VPC, IAM, CloudWatch)</li>
-      <li>Infrastructure as Code (Terraform, CDK, CloudFormation)</li>
-      <li>Containerization (Docker, Kubernetes)</li>
-      <li>CI/CD (Jenkins, GitLab CI, GitHub Actions, AWS CodePipeline)</li>
-      <li>Cost Optimization & FinOps</li>
-      <li>Scripting (Python, Bash, PowerShell, SQL)</li>
-      <li>Monitoring (Prometheus, Grafana, ELK Stack)</li>
-      <li>Multi-Cloud (Azure, Oracle Cloud)</li>
-    </ul>
-  </section>
+    <section>
+      <h2>Skills</h2>
+      <ul>
+        <li>AWS (EC2, S3, Lambda, RDS, VPC, IAM, CloudWatch)</li>
+        <li>Infrastructure as Code (Terraform, CDK, CloudFormation)</li>
+        <li>Containerization (Docker, Kubernetes)</li>
+        <li>CI/CD (Jenkins, GitLab CI, GitHub Actions, AWS CodePipeline)</li>
+        <li>Cost Optimization & FinOps</li>
+        <li>Scripting (Python, Bash, PowerShell, SQL)</li>
+        <li>Monitoring (Prometheus, Grafana, ELK Stack)</li>
+        <li>Multi-Cloud (Azure, Oracle Cloud)</li>
+      </ul>
+    </section>
 
-  <section>
-    <h2>Featured Projects</h2>
+    <section>
+      <h2>Featured Projects</h2>
 
-    <h3>Data Platform (DevOps)</h3>
-    <p>Architected a secure, serverless ETL data platform using AWS Glue, S3, and Redshift for an international
-      humanitarian organization. Implemented a Single Point of Truth architecture, reducing manual analyst workload by
-      30%.</p>
+      <h3>Data Platform (DevOps)</h3>
+      <p>Architected a secure, serverless ETL data platform using AWS Glue, S3, and Redshift for an international
+        humanitarian organization. Implemented a Single Point of Truth architecture, reducing manual analyst workload by
+        30%.</p>
 
-    <h3>FinOps Assessment (Cloud Finance)</h3>
-    <p>Led a comprehensive cloud financial assessment analyzing EC2, S3, and data transfer spending. Delivered a
-      strategic cost optimization plan that reduced monthly cloud spending by 65% through rightsizing, storage tiering,
-      and Savings Plans implementation.</p>
+      <h3>FinOps Assessment (Cloud Finance)</h3>
+      <p>Led a comprehensive cloud financial assessment analyzing EC2, S3, and data transfer spending. Delivered a
+        strategic cost optimization plan that reduced monthly cloud spending by 65% through rightsizing, storage
+        tiering,
+        and Savings Plans implementation.</p>
 
-    <h3>Web Staticization & Edge Optimization</h3>
-    <p>Engineered a CI/CD pipeline using AWS CodePipeline to convert a dynamic website to static hosting on S3.
-      Implemented CloudFront distribution and Lambda@Edge functions, reducing global average page load times by over
-      70%.</p>
-  </section>
+      <h3>Web Staticization & Edge Optimization</h3>
+      <p>Engineered a CI/CD pipeline using AWS CodePipeline to convert a dynamic website to static hosting on S3.
+        Implemented CloudFront distribution and Lambda@Edge functions, reducing global average page load times by over
+        70%.</p>
+    </section>
 
-  <section>
-    <h2>Certifications</h2>
-    <ul>
-      <li>AWS Certified Solutions Architect Professional</li>
-      <li>AWS Certified Developer Associate</li>
-      <li>AWS Certified SysOps Administrator Associate</li>
-      <li>AWS Certified Solutions Architect Associate</li>
-      <li>Microsoft Azure Fundamentals</li>
-      <li>Cisco Security and Network Defense Certified</li>
-    </ul>
-  </section>
+    <section>
+      <h2>Certifications</h2>
+      <ul>
+        <li>AWS Certified Solutions Architect Professional</li>
+        <li>AWS Certified Developer Associate</li>
+        <li>AWS Certified SysOps Administrator Associate</li>
+        <li>AWS Certified Solutions Architect Associate</li>
+        <li>Microsoft Azure Fundamentals</li>
+        <li>Cisco Security and Network Defense Certified</li>
+      </ul>
+    </section>
 
-  <section>
-    <h2>Writing</h2>
-    <h3><a href="blog/vpc-traffic-mirroring-validation.html">Beyond Staging: VPC Traffic Mirroring</a></h3>
-    <p class="meta">July 2025</p>
-    <p>How we used Amazon VPC Traffic Mirroring to validate a critical refactor with real production traffic without
-      risk.</p>
+    <section>
+      <h2>Writing</h2>
+      <h3><a href="blog/vpc-traffic-mirroring-validation.html">Beyond Staging: VPC Traffic Mirroring</a></h3>
+      <p class="meta">July 2025</p>
+      <p>How we used Amazon VPC Traffic Mirroring to validate a critical refactor with real production traffic without
+        risk.</p>
 
-    <h3><a href="blog/handling-multiple-domains-redirects.html">Multiple Domains Redirects on AWS</a></h3>
-    <p class="meta">September 2024</p>
-    <p>Using Amazon S3 and CloudFront to set up smart redirects for legacy domains without maintaining web servers.</p>
+      <h3><a href="blog/handling-multiple-domains-redirects.html">Multiple Domains Redirects on AWS</a></h3>
+      <p class="meta">September 2024</p>
+      <p>Using Amazon S3 and CloudFront to set up smart redirects for legacy domains without maintaining web servers.
+      </p>
 
-    <p><a href="blog/index.html">More posts →</a></p>
-  </section>
+      <p><a href="blog/index.html">More posts →</a></p>
+    </section>
 
-  <section>
-    <h2>Resume</h2>
-    <p>Take a look at my <a href="assets/docs/resume.pdf" class="resume-link" target="_blank" rel="noopener">resume</a>
-      to get a comprehensive overview of my skills, experience, and achievements.</p>
-  </section>
+    <section>
+      <h2>Resume</h2>
+      <p>Take a look at my <a href="assets/docs/resume.pdf" class="resume-link" target="_blank"
+          rel="noopener">resume</a>
+        to get a comprehensive overview of my skills, experience, and achievements.</p>
+    </section>
 
-  <section>
-    <h2>Contact</h2>
-    <p>Interested in discussing cloud infrastructure, DevOps strategies, or potential collaborations? I'm always open to
-      connecting with fellow professionals.</p>
-    <p class="contact">
-      <a href="mailto:gc.ale03@gmail.com">Email</a>
-      <a href="https://github.com/AleG03" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://linkedin.com/in/alessandro-gallo-cassarino-666607228" target="_blank" rel="noopener">LinkedIn</a>
-    </p>
-  </section>
+    <section>
+      <h2>Contact</h2>
+      <p>Interested in discussing cloud infrastructure, DevOps strategies, or potential collaborations? I'm always open
+        to
+        connecting with fellow professionals.</p>
+      <p class="contact">
+        <a href="mailto:gc.ale03@gmail.com">Email</a>
+        <a href="https://github.com/AleG03" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/alessandro-gallo-cassarino-666607228" target="_blank"
+          rel="noopener">LinkedIn</a>
+      </p>
+    </section>
+  </main>
 
   <footer>
     <p>© 2025 Alessandro Gallo. All rights reserved.</p>

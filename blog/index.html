@@ -29,12 +29,13 @@
             font-family: Charter, 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', Georgia, serif;
             font-size: 18px;
             line-height: 1.8;
-            color: #2c2c2c;
+            color: #1a1a1a;
             background: #f9f7f4;
             max-width: 680px;
             margin: 0 auto;
             padding: 4rem 2rem;
-            -webkit-font-smoothing: antialiased;
+            -webkit-font-smoothing: subpixel-antialiased;
+            -moz-osx-font-smoothing: auto;
         }
 
         header {
@@ -73,7 +74,7 @@
         a {
             color: #2c2c2c;
             text-decoration: underline;
-            text-decoration-color: #d4cfc8;
+            text-decoration-color: #a6a6a6;
             text-underline-offset: 3px;
             transition: all 0.2s ease;
         }
@@ -84,7 +85,7 @@
         }
 
         .meta {
-            color: #7a7a7a;
+            color: #595959;
             font-size: 1rem;
             font-style: italic;
             margin-bottom: 1.5rem;
@@ -121,7 +122,7 @@
             margin-top: 6rem;
             padding-left: 2rem;
             border-left: 1px solid #e0ddd8;
-            color: #999;
+            color: #595959;
             font-size: 0.85rem;
         }
 
@@ -151,21 +152,26 @@
             as they scale. Here, I share patterns, mistakes, and insights from real-world projects.</p>
     </header>
 
-    <article>
-        <h3><a href="vpc-traffic-mirroring-validation.html">Beyond Staging: Validating Code with Real Production Traffic
-                using Amazon VPC Traffic Mirroring</a></h3>
-        <p class="meta">July 15, 2025</p>
-        <p>Learn how to transparently shadow live production traffic to validate new code in isolation. We discovered a
-            subtle query bug that synthetic tests missed, leading to a much more confident deployment.</p>
-    </article>
+    <main>
+        <article>
+            <h3><a href="vpc-traffic-mirroring-validation.html">Beyond Staging: Validating Code with Real Production
+                    Traffic
+                    using Amazon VPC Traffic Mirroring</a></h3>
+            <p class="meta">July 15, 2025</p>
+            <p>Learn how to transparently shadow live production traffic to validate new code in isolation. We
+                discovered a
+                subtle query bug that synthetic tests missed, leading to a much more confident deployment.</p>
+        </article>
 
-    <article>
-        <h3><a href="handling-multiple-domains-redirects.html">Handling multiple domains redirects using Amazon S3 and
-                Amazon CloudFront</a></h3>
-        <p class="meta">September 12, 2024</p>
-        <p>Explore how to use Amazon S3 and Amazon CloudFront to set up smart redirects without maintaining a web
-            server. Learn how to retire legacy servers and use S3 metadata for granular redirect management.</p>
-    </article>
+        <article>
+            <h3><a href="handling-multiple-domains-redirects.html">Handling multiple domains redirects using Amazon S3
+                    and
+                    Amazon CloudFront</a></h3>
+            <p class="meta">September 12, 2024</p>
+            <p>Explore how to use Amazon S3 and Amazon CloudFront to set up smart redirects without maintaining a web
+                server. Learn how to retire legacy servers and use S3 metadata for granular redirect management.</p>
+        </article>
+    </main>
 
     <!-- Template for future posts:
   <article>
