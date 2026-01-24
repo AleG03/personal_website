@@ -19,6 +19,15 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::selection {
+            background: #e0ddd8;
+            color: #2c2c2c;
+        }
+
         body {
             font-family: Charter, 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', Georgia, serif;
             font-size: 18px;
@@ -28,6 +37,11 @@
             max-width: 680px;
             margin: 0 auto;
             padding: 4rem 2rem;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            margin-bottom: 5rem;
         }
 
         h1 {
@@ -36,6 +50,7 @@
             margin-bottom: 0.5rem;
             letter-spacing: -0.03em;
             color: #1a1a1a;
+            line-height: 1.1;
         }
 
         h2 {
@@ -63,6 +78,7 @@
             text-decoration: underline;
             text-decoration-color: #d4cfc8;
             text-underline-offset: 3px;
+            transition: all 0.2s ease;
         }
 
         a:hover {
@@ -80,6 +96,7 @@
         .back-link {
             margin-bottom: 3rem;
             display: inline-block;
+            text-decoration: none;
         }
 
         .back-link:before {
@@ -93,34 +110,38 @@
             margin-bottom: 5rem;
         }
 
-        img {
+        article img {
             max-width: 100%;
             height: auto;
             border-radius: 4px;
             margin: 2rem 0;
             display: block;
             border: 1px solid #e0ddd8;
-        }
-
-        code {
-            background: #f0ede8;
-            padding: 0.2rem 0.4rem;
-            border-radius: 2px;
-            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
-            font-size: 0.9em;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
         }
 
         pre {
             background: #f0ede8;
-            padding: 1rem;
-            border-radius: 2px;
+            padding: 1.5rem;
+            border-radius: 4px;
             overflow-x: auto;
-            margin: 1.5rem 0;
+            margin: 2rem 0;
+            border: 1px solid #e0ddd8;
+            font-size: 0.9rem;
+        }
+
+        code {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+            background: #f0ede8;
+            padding: 0.2rem 0.4rem;
+            border-radius: 2px;
+            font-size: 0.9em;
         }
 
         pre code {
             background: none;
             padding: 0;
+            font-size: 1em;
         }
 
         ul,
@@ -141,6 +162,20 @@
             color: #999;
             font-size: 0.85rem;
         }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 2rem 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            article {
+                padding-left: 1.2rem;
+            }
+        }
     </style>
 </head>
 
@@ -153,7 +188,6 @@
     </header>
 
     <article>
-
         <p>We've all been there: Unit tests are green, integration tests pass with flying colors, and even the most
             rigorous synthetic load tests show the new code is ready. Confidence is high. Yet, a persistent question
             often lingers in the background:</p>
@@ -208,8 +242,9 @@
 
         <p><strong>Second, we deployed our mirroring environment.</strong> We set up an AWS Network Load Balancer in
             front of an AWS Auto Scaling group of Amazon EC2 instances. On these instances, we installed a lightweight
-            open-source tool (like this one) to handle the VXLAN decapsulation and forward the traffic to our shadow AWS
-            ALB. This gateway was the bridge between the mirrored world and our test environment.</p>
+            open-source tool (<a href="https://github.com/beAle01/traffic-mirroring" target="_blank" rel="noopener">like
+                this one</a>) to handle the VXLAN decapsulation and forward the traffic to our shadow
+            AWS ALB. This gateway was the bridge between the mirrored world and our test environment.</p>
 
         <p><strong>Third, we identified the traffic source.</strong> We identified the network interfaces (ENIs) of our
             production Amazon EC2 instances as the Mirror Source. This is where the traffic we wanted to copy
@@ -224,7 +259,8 @@
         <p>Finally, we created a <strong>Mirror Session</strong> to connect the source, the filter, and our gateway
             target. With the configuration complete, we activated the session.</p>
 
-        <img src="../assets/blog/vpc-mirroring/final_diagram.png" alt="Diagram of the final architecture with traffic mirroring">
+        <img src="../assets/blog/vpc-mirroring/final_diagram.png"
+            alt="Diagram of the final architecture with traffic mirroring">
 
         <h2>The Moment of Validation</h2>
         <p>The results were immediate and illuminating. Watching our CloudWatch dashboards, we saw the CPU and Memory

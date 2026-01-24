@@ -16,6 +16,15 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::selection {
+            background: #e0ddd8;
+            color: #2c2c2c;
+        }
+
         body {
             font-family: Charter, 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', Georgia, serif;
             font-size: 18px;
@@ -25,6 +34,11 @@
             max-width: 680px;
             margin: 0 auto;
             padding: 4rem 2rem;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            margin-bottom: 5rem;
         }
 
         h1 {
@@ -33,6 +47,7 @@
             margin-bottom: 0.5rem;
             letter-spacing: -0.03em;
             color: #1a1a1a;
+            line-height: 1.1;
         }
 
         h2 {
@@ -60,6 +75,7 @@
             text-decoration: underline;
             text-decoration-color: #d4cfc8;
             text-underline-offset: 3px;
+            transition: all 0.2s ease;
         }
 
         a:hover {
@@ -78,12 +94,12 @@
             font-size: 1.15rem;
             line-height: 1.9;
             color: #4a4a4a;
-            margin-bottom: 5rem;
         }
 
         .back-link {
             margin-bottom: 3rem;
             display: inline-block;
+            text-decoration: none;
         }
 
         .back-link:before {
@@ -107,6 +123,20 @@
             border-left: 1px solid #e0ddd8;
             color: #999;
             font-size: 0.85rem;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 2rem 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            article {
+                padding-left: 1.2rem;
+            }
         }
     </style>
 </head>

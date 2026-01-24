@@ -18,6 +18,15 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::selection {
+            background: #e0ddd8;
+            color: #2c2c2c;
+        }
+
         body {
             font-family: Charter, 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', Georgia, serif;
             font-size: 18px;
@@ -27,6 +36,11 @@
             max-width: 680px;
             margin: 0 auto;
             padding: 4rem 2rem;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            margin-bottom: 5rem;
         }
 
         h1 {
@@ -35,6 +49,7 @@
             margin-bottom: 0.5rem;
             letter-spacing: -0.03em;
             color: #1a1a1a;
+            line-height: 1.1;
         }
 
         h2 {
@@ -62,6 +77,7 @@
             text-decoration: underline;
             text-decoration-color: #d4cfc8;
             text-underline-offset: 3px;
+            transition: all 0.2s ease;
         }
 
         a:hover {
@@ -73,12 +89,13 @@
             color: #7a7a7a;
             font-size: 1rem;
             font-style: italic;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .back-link {
             margin-bottom: 3rem;
             display: inline-block;
+            text-decoration: none;
         }
 
         .back-link:before {
@@ -92,34 +109,38 @@
             margin-bottom: 5rem;
         }
 
-        img {
+        article img {
             max-width: 100%;
             height: auto;
             border-radius: 4px;
             margin: 2rem 0;
             display: block;
             border: 1px solid #e0ddd8;
-        }
-
-        code {
-            background: #f0ede8;
-            padding: 0.2rem 0.4rem;
-            border-radius: 2px;
-            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
-            font-size: 0.9em;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
         }
 
         pre {
             background: #f0ede8;
-            padding: 1rem;
-            border-radius: 2px;
+            padding: 1.5rem;
+            border-radius: 4px;
             overflow-x: auto;
-            margin: 1.5rem 0;
+            margin: 2rem 0;
+            border: 1px solid #e0ddd8;
+            font-size: 0.9rem;
+        }
+
+        code {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+            background: #f0ede8;
+            padding: 0.2rem 0.4rem;
+            border-radius: 2px;
+            font-size: 0.9em;
         }
 
         pre code {
             background: none;
             padding: 0;
+            font-size: 1em;
         }
 
         ul,
@@ -140,6 +161,20 @@
             color: #999;
             font-size: 0.85rem;
         }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 2rem 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            article {
+                padding-left: 1.2rem;
+            }
+        }
     </style>
 </head>
 
@@ -152,7 +187,6 @@
     </header>
 
     <article>
-
         <h2>Introduction</h2>
         <p>Ah, yet another "Amazon CloudFront + Amazon S3 combo” article for Web hosting…”</p>
         <p>Yes, it is… but with a twist that's worth the attention.</p>
@@ -179,7 +213,8 @@
         <p>Let's suppose that our website is running smoothly on Amazon S3, with CloudFront ensuring it's faster than
             ever. But what about those other domain names we've accumulated over time?</p>
         <p>Let's say we have oldexample.com, oldexample1.com, and a few others that all need to redirect to
-            <em>example.com</em>.</p>
+            <em>example.com</em>.
+        </p>
         <p>In a traditional setup with a virtual machine, we could easily configure a redirect in the virtual host
             settings. However, maintaining a VM just for redirects adds unnecessary complexity and cost.</p>
         <p>Sure, some DNS services let us create 301-302 redirect records, but this approach feels like taking the easy
@@ -252,7 +287,8 @@
         <p>Sometimes, we might want our "latest" redirect to point to an external service or even a different domain. No
             problem, <em>x-amz-website-redirect-location</em> handles external redirects just as easily. For example, if
             our newest version is hosted on a different domain, simply set the redirect to
-            <code>https://newexample.com/v4.0/</code>.</p>
+            <code>https://newexample.com/v4.0/</code>.
+        </p>
 
         <h3>Bonus Tip - Automating the Process</h3>
         <p>While manually updating the redirect metadata each time we release a new version is simple enough, we might
