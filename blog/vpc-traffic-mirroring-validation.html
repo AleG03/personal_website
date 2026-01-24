@@ -196,7 +196,8 @@
             <p><em>"What will happen with real users? With their messy, unpredictable,
                     I-didn't-even-know-the-API-could-do-that kind of traffic?"</em></p>
 
-            <img src="../assets/blog/vpc-mirroring/intro.jpg" alt="Beyond Staging: VPC Traffic Mirroring Intro">
+            <img src="../assets/blog/vpc-mirroring/intro.jpg" alt="Beyond Staging: VPC Traffic Mirroring Intro"
+                decoding="async">
 
             <p>That question was particularly resonant for us. We had just completed a significant refactoring of a
                 critical
@@ -209,7 +210,7 @@
                 results.</p>
 
             <img src="../assets/blog/vpc-mirroring/production_diagram.png"
-                alt="Simplified diagram of the production flow">
+                alt="Simplified diagram of the production flow" loading="lazy" decoding="async">
 
             <h2>The "What If": Replicating Production Without Risk</h2>
             <p>The concern sparked a caffeine-fueled brainstorming session. "What if," someone proposed, "we could
@@ -275,13 +276,14 @@
                 for
                 port 8080." This focused our experiment and, crucially, helped manage costs.</p>
 
-            <img src="../assets/blog/vpc-mirroring/filter.png" alt="Mirror Filter Configuration">
+            <img src="../assets/blog/vpc-mirroring/filter.png" alt="Mirror Filter Configuration" loading="lazy"
+                decoding="async">
 
             <p>Finally, we created a <strong>Mirror Session</strong> to connect the source, the filter, and our gateway
                 target. With the configuration complete, we activated the session.</p>
 
             <img src="../assets/blog/vpc-mirroring/final_diagram.png"
-                alt="Diagram of the final architecture with traffic mirroring">
+                alt="Diagram of the final architecture with traffic mirroring" loading="lazy" decoding="async">
 
             <h2>The Moment of Validation</h2>
             <p>The results were immediate and illuminating. Watching our CloudWatch dashboards, we saw the CPU and
@@ -291,7 +293,8 @@
                 production
                 load.</p>
 
-            <img src="../assets/blog/vpc-mirroring/metrics.png" alt="CloudWatch metrics of the shadow application">
+            <img src="../assets/blog/vpc-mirroring/metrics.png" alt="CloudWatch metrics of the shadow application"
+                loading="lazy" decoding="async">
 
             <p>This is where the true value emerged.</p>
 
