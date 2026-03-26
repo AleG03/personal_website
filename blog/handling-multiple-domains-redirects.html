@@ -5,178 +5,16 @@
     <meta charset="utf-8">
     <title>Handling multiple domains redirects using Amazon S3 and Amazon CloudFront - Alessandro Gallo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Explore how to use Amazon S3 and Amazon CloudFront to set up smart redirects without maintaining a web server.">
+    <meta name="description" content="Explore how to use Amazon S3 and Amazon CloudFront to set up smart redirects without maintaining a web server.">
     <meta name="author" content="Alessandro Gallo">
-    <link rel="canonical"
-        href="https://blog.besharp.it/handling-multiple-domains-redirects-using-amazon-s3-and-amazon-cloudfront/">
+    <link rel="canonical" href="https://blog.besharp.it/handling-multiple-domains-redirects-using-amazon-s3-and-amazon-cloudfront/">
     <link rel="icon" href="/assets/favicon/favicon.svg" type="image/svg+xml">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        ::selection {
-            background: #e0ddd8;
-            color: #2c2c2c;
-        }
-
-        body {
-            font-family: Charter, 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', Georgia, serif;
-            font-size: 18px;
-            line-height: 1.8;
-            color: #1a1a1a;
-            background: #f9f7f4;
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-            -webkit-font-smoothing: subpixel-antialiased;
-            -moz-osx-font-smoothing: auto;
-        }
-
-        header {
-            margin-bottom: 5rem;
-        }
-
-        h1 {
-            font-size: 3rem;
-            font-weight: 400;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.03em;
-            color: #1a1a1a;
-            line-height: 1.1;
-        }
-
-        h2 {
-            font-size: 1.75rem;
-            font-weight: 400;
-            margin: 3rem 0 1.5rem;
-            color: #1a1a1a;
-            letter-spacing: -0.01em;
-        }
-
-        h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin: 2.5rem 0 0.75rem;
-            color: #2c2c2c;
-        }
-
-        p {
-            margin-bottom: 1.2rem;
-            color: #4a4a4a;
-        }
-
-        a {
-            color: #2c2c2c;
-            text-decoration: underline;
-            text-decoration-color: #a6a6a6;
-            text-underline-offset: 3px;
-            transition: all 0.2s ease;
-        }
-
-        a:hover {
-            color: #8b6f47;
-            text-decoration-color: #8b6f47;
-        }
-
-        .meta {
-            color: #595959;
-            font-size: 1rem;
-            font-style: italic;
-            margin-bottom: 1.5rem;
-        }
-
-        .back-link {
-            margin-bottom: 3rem;
-            display: inline-block;
-            text-decoration: none;
-        }
-
-        .back-link:before {
-            content: "← ";
-            color: #8b6f47;
-        }
-
-        article {
-            padding-left: 2rem;
-            border-left: 1px solid #e0ddd8;
-            margin-bottom: 5rem;
-        }
-
-        article img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 4px;
-            margin: 2rem 0;
-            display: block;
-            border: 1px solid #e0ddd8;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-        }
-
-        pre {
-            background: #f0ede8;
-            padding: 1.5rem;
-            border-radius: 4px;
-            overflow-x: auto;
-            margin: 2rem 0;
-            border: 1px solid #e0ddd8;
-            font-size: 0.9rem;
-        }
-
-        code {
-            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
-            background: #f0ede8;
-            padding: 0.2rem 0.4rem;
-            border-radius: 2px;
-            font-size: 0.9em;
-        }
-
-        pre code {
-            background: none;
-            padding: 0;
-            font-size: 1em;
-        }
-
-        ul,
-        ol {
-            margin-bottom: 1.2rem;
-            padding-left: 2rem;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-            color: #4a4a4a;
-        }
-
-        footer {
-            margin-top: 6rem;
-            padding-left: 2rem;
-            border-left: 1px solid #e0ddd8;
-            color: #595959;
-            font-size: 0.85rem;
-        }
-
-        @media (max-width: 600px) {
-            body {
-                padding: 2rem 1.5rem;
-            }
-
-            h1 {
-                font-size: 2.2rem;
-            }
-
-            article {
-                padding-left: 1.2rem;
-            }
-        }
-    </style>
+    <meta property="og:title" content="Multiple Domains Redirects using Amazon S3 and CloudFront">
+    <meta property="og:description" content="Explore how to use Amazon S3 and Amazon CloudFront to set up smart redirects without maintaining a web server.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://alessandrogallo.eu.org/blog/handling-multiple-domains-redirects.html">
+    <meta property="og:image" content="https://alessandrogallo.eu.org/assets/blog/s3-redirects/redirect_setup.png">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
@@ -193,92 +31,51 @@
             <p>Ah, yet another "Amazon CloudFront + Amazon S3 combo” article for Web hosting…”</p>
             <p>Yes, it is… but with a twist that's worth the attention.</p>
             <p>By now, it feels like every Cloud enthusiast (and their pet cat) has written a blog post about it.</p>
-            <p>But what if there were a few tricks to spice things up and maybe even retire that old Apache once and for
-                all?</p>
-            <p>In this article, we'll explore how to use Amazon S3 and Amazon CloudFront to set up smart redirects to
-                our
-                main site without maintaining a web server.</p>
-            <p>We'll also examine how to efficiently use Amazon S3 metadata to ensure that users are always directed to
-                the
-                latest version of our content.</p>
+            <p>But what if there were a few tricks to spice things up and maybe even retire that old Apache once and for all?</p>
+            <p>In this article, we'll explore how to use Amazon S3 and Amazon CloudFront to set up smart redirects to our main site without maintaining a web server.</p>
+            <p>We'll also examine how to efficiently use Amazon S3 metadata to ensure that users are always directed to the latest version of our content.</p>
             <p>Let's dive into the topic!</p>
 
             <h2>The Basics</h2>
             <p>Before we get into the serious stuff, let's take a quick trip down memory lane:</p>
             <ul>
-                <li><strong>Amazon S3:</strong> Amazon S3 is an object storage service that is also used to host static
-                    websites, serving HTML, CSS, JavaScript, and image files directly in a bucket.</li>
-                <li><strong>Amazon CloudFront Integration:</strong> Amazon CloudFront enhances this setup by serving
-                    content
-                    from edge locations closer to the users, improving load times and reducing latency. It also allows
-                    for
-                    custom domain names via SSL/TLS certificates.</li>
+                <li><strong>Amazon S3:</strong> Amazon S3 is an object storage service that is also used to host static websites, serving HTML, CSS, JavaScript, and image files directly in a bucket.</li>
+                <li><strong>Amazon CloudFront Integration:</strong> Amazon CloudFront enhances this setup by serving content from edge locations closer to the users, improving load times and reducing latency. It also allows for custom domain names via SSL/TLS certificates.</li>
             </ul>
 
             <h2>The Challenges: Website Redirects</h2>
-            <p>Let's suppose that our website is running smoothly on Amazon S3, with CloudFront ensuring it's faster
-                than
-                ever. But what about those other domain names we've accumulated over time?</p>
-            <p>Let's say we have oldexample.com, oldexample1.com, and a few others that all need to redirect to
-                <em>example.com</em>.
-            </p>
-            <p>In a traditional setup with a virtual machine, we could easily configure a redirect in the virtual host
-                settings. However, maintaining a VM just for redirects adds unnecessary complexity and cost.</p>
-            <p>Sure, some DNS services let us create 301-302 redirect records, but this approach feels like taking the
-                easy
-                way out, and not everyone can migrate to those services.</p>
+            <p>Let's suppose that our website is running smoothly on Amazon S3, with CloudFront ensuring it's faster than ever. But what about those other domain names we've accumulated over time?</p>
+            <p>Let's say we have oldexample.com, oldexample1.com, and a few others that all need to redirect to <em>example.com</em>.</p>
+            <p>In a traditional setup with a virtual machine, we could easily configure a redirect in the virtual host settings. However, maintaining a VM just for redirects adds unnecessary complexity and cost.</p>
+            <p>Sure, some DNS services let us create 301-302 redirect records, but this approach feels like taking the easy way out, and not everyone can migrate to those services.</p>
             <p>What about setting up a CNAME record?</p>
             <p>Unfortunately, that doesn't provide a true redirect and can have negative implications for our SEO.</p>
-            <p>Then, there's the option to use CloudFront Functions or Lambda@Edge. Both are valid choices: CloudFront
-                Functions are fast and cost-effective but have a 10KB limit, so it's better not to fill them up just
-                with
-                redirects. Lambda@Edge doesn't have that size limitation, but it's slower and comes with a higher cost.
-            </p>
+            <p>Then, there's the option to use CloudFront Functions or Lambda@Edge. Both are valid choices: CloudFront Functions are fast and cost-effective but have a 10KB limit, so it's better not to fill them up just with redirects. Lambda@Edge doesn't have that size limitation, but it's slower and comes with a higher cost.</p>
             <p>We also need to maintain the code for both solutions.</p>
-            <p>So, how do we implement these redirects without falling into DNS purgatory or overcomplicating our
-                infrastructure?</p>
+            <p>So, how do we implement these redirects without falling into DNS purgatory or overcomplicating our infrastructure?</p>
 
             <h2>The Solution</h2>
-            <p>Here's where things get interesting: what if we put an Amazon CloudFront + Amazon S3 setup in front of
-                our
-                existing Amazon CloudFront + Amazon S3 website?</p>
+            <p>Here's where things get interesting: what if we put an Amazon CloudFront + Amazon S3 setup in front of our existing Amazon CloudFront + Amazon S3 website?</p>
             <p>It may sound weird, but believe us, it works! Here's how:</p>
             <ol>
-                <li>Create a new Amazon S3 bucket and enable website hosting, configuring it to redirect to our main
-                    site.
-                </li>
-                <li>In the Amazon S3 website hosting settings, set the redirect to our primary domain (e.g.,
-                    example.com).
-                </li>
-                <li>Launch a new Amazon CloudFront distribution. Under Alternate Domain Names (CNAMEs), add all our
-                    legacy
-                    domains, such as <em>oldexample.com</em> and <em>oldexample1.com</em>.</li>
-                <li>Set the new Amazon S3 bucket endpoint as the origin for this new Amazon CloudFront distribution.
-                </li>
+                <li>Create a new Amazon S3 bucket and enable website hosting, configuring it to redirect to our main site.</li>
+                <li>In the Amazon S3 website hosting settings, set the redirect to our primary domain (e.g., example.com).</li>
+                <li>Launch a new Amazon CloudFront distribution. Under Alternate Domain Names (CNAMEs), add all our legacy domains, such as <em>oldexample.com</em> and <em>oldexample1.com</em>.</li>
+                <li>Set the new Amazon S3 bucket endpoint as the origin for this new Amazon CloudFront distribution.</li>
                 <li>Configure cache, cookie policies, and CORS settings as needed.</li>
             </ol>
 
-            <img src="../assets/blog/s3-redirects/redirect_setup.png" alt="S3 redirect setup" loading="lazy"
-                decoding="async">
+            <img src="../assets/blog/s3-redirects/redirect_setup.png" alt="S3 redirect setup" loading="lazy" decoding="async">
 
-            <p>Voilà! All traffic from the old domains will now redirect to our new site without the hassle of managing
-                any
-                virtual hosts or complicated infrastructure.</p>
+            <p>Voilà! All traffic from the old domains will now redirect to our new site without the hassle of managing any virtual hosts or complicated infrastructure.</p>
 
             <h3>Bonus Tip - Consistently Use of WWW for SEO</h3>
-            <p>Consistency is key in SEO, and maintaining a uniform URL structure can be tricky. To ensure our URLs stay
-                SEO-friendly, we can use the Amazon S3 website hosting option to always redirect to the "www" version of
-                our
-                domain.</p>
+            <p>Consistency is key in SEO, and maintaining a uniform URL structure can be tricky. To ensure our URLs stay SEO-friendly, we can use the Amazon S3 website hosting option to always redirect to the "www" version of our domain.</p>
             <p>It's a small change, but it makes a big difference!</p>
 
             <h2>Amazon S3 Metadata Management</h2>
             <p>Now let's dive into how to granularly manage redirects for paths and files.</p>
-            <p>Let's say we need to manage multiple versions of our product, and each version lives in a folder (/v1.0/,
-                /v2.0/ ). When a new version is released, we want users to be redirected to the latest version without
-                the
-                headache of constantly updating links or maintaining a list of redirects. This is where the Amazon S3
-                metadata field <em>x-amz-website-redirect-location</em> comes to aid.</p>
+            <p>Let's say we need to manage multiple versions of our product, and each version lives in a folder (/v1.0/, /v2.0/ ). When a new version is released, we want users to be redirected to the latest version without the headache of constantly updating links or maintaining a list of redirects. This is where the Amazon S3 metadata field <em>x-amz-website-redirect-location</em> comes to aid.</p>
 
             <h3>Use Case</h3>
             <p>Consider this scenario: we have versioned directories for our product</p>
@@ -287,74 +84,43 @@
                 <li>/v2.0/</li>
                 <li>/v3.0/ (the latest version)</li>
             </ul>
-            <p>We want anyone visiting /latest/ to be redirected to /v3.0/, and when we release /v4.0/, we want to
-                update
-                that redirect effortlessly.</p>
+            <p>We want anyone visiting /latest/ to be redirected to /v3.0/, and when we release /v4.0/, we want to update that redirect effortlessly.</p>
 
             <h3>Solution</h3>
-            <p>To achieve this, create a placeholder object at /latest/ (this can be an empty object or a folder). Then,
-                in
-                the Metadata section of the S3 object's Properties, set a new key:</p>
+            <p>To achieve this, create a placeholder object at /latest/ (this can be an empty object or a folder). Then, in the Metadata section of the S3 object's Properties, set a new key:</p>
             <ul>
                 <li><strong>Key:</strong> x-amz-website-redirect-location</li>
                 <li><strong>Value:</strong> /v3.0/ (or whatever the latest version is)</li>
             </ul>
-            <p>When we release a new version (e.g., /v4.0/), simply update the metadata to point to /v4.0/. This way,
-                users
-                accessing /latest/ will always be redirected to the freshest version of our content.</p>
+            <p>When we release a new version (e.g., /v4.0/), simply update the metadata to point to /v4.0/. This way, users accessing /latest/ will always be redirected to the freshest version of our content.</p>
 
-            <img src="../assets/blog/s3-redirects/metadata.png" alt="S3 Metadata Configuration" loading="lazy"
-                decoding="async">
+            <img src="../assets/blog/s3-redirects/metadata.png" alt="S3 Metadata Configuration" loading="lazy" decoding="async">
 
             <h3>Setting Up for External Redirects</h3>
-            <p>Sometimes, we might want our "latest" redirect to point to an external service or even a different
-                domain. No
-                problem, <em>x-amz-website-redirect-location</em> handles external redirects just as easily. For
-                example, if
-                our newest version is hosted on a different domain, simply set the redirect to
-                <code>https://newexample.com/v4.0/</code>.
-            </p>
+            <p>Sometimes, we might want our "latest" redirect to point to an external service or even a different domain. No problem, <em>x-amz-website-redirect-location</em> handles external redirects just as easily. For example, if our newest version is hosted on a different domain, simply set the redirect to <code>https://newexample.com/v4.0/</code>.</p>
 
             <h3>Bonus Tip - Automating the Process</h3>
-            <p>While manually updating the redirect metadata each time we release a new version is simple enough, we
-                might
-                want to automate this for large-scale projects. We can use AWS SDKs or the AWS CLI to automate updating
-                the
-                x-amz-website-redirect-location for every new release. Here's an example of how we could update the
-                metadata
-                with the AWS CLI:</p>
+            <p>While manually updating the redirect metadata each time we release a new version is simple enough, we might want to automate this for large-scale projects. We can use AWS SDKs or the AWS CLI to automate updating the x-amz-website-redirect-location for every new release. Here's an example of how we could update the metadata with the AWS CLI:</p>
             <pre><code>aws s3api put-object \ 
 --bucket your-bucket-name \ 
 --key latest/ \ 
 --website-redirect-location /v4.0/</code></pre>
-            <p>By incorporating this into our CI/CD pipeline, we can ensure that the redirect to the latest version is
-                always up-to-date as part of our release process.</p>
+            <p>By incorporating this into our CI/CD pipeline, we can ensure that the redirect to the latest version is always up-to-date as part of our release process.</p>
 
             <h2>Wrap-Up</h2>
-            <p>There we have it: Amazon S3 web hosting with Amazon CloudFront, but with some unexpected tricks up its
-                sleeve! From managing multiple domain redirects to keeping our users pointed to the latest product
-                versions,
-                we've shown how to leverage the powerful combination of Amazon S3 and Amazon CloudFront in a serverless,
-                efficient way.</p>
-            <p>No servers, no complex infrastructure, just a smart use of AWS's capabilities to keep our sites and users
-                up-to-date and lightning fast.</p>
+            <p>There we have it: Amazon S3 web hosting with Amazon CloudFront, but with some unexpected tricks up its sleeve! From managing multiple domain redirects to keeping our users pointed to the latest product versions, we've shown how to leverage the powerful combination of Amazon S3 and Amazon CloudFront in a serverless, efficient way.</p>
+            <p>No servers, no complex infrastructure, just a smart use of AWS's capabilities to keep our sites and users up-to-date and lightning fast.</p>
             <p>The key takeaways:</p>
             <ul>
-                <li>Amazon CloudFront + Amazon S3 can handle more than just static site hosting; it's also a great
-                    solution
-                    for simplifying redirects.</li>
-                <li><em>x-amz-website-redirect-location</em> allows for seamless versioning and external redirects
-                    without
-                    needing complicated functions or scripts.</li>
+                <li>Amazon CloudFront + Amazon S3 can handle more than just static site hosting; it's also a great solution for simplifying redirects.</li>
+                <li><em>x-amz-website-redirect-location</em> allows for seamless versioning and external redirects without needing complicated functions or scripts.</li>
             </ul>
-            <p>So next time someone says, "Oh, another Amazon CloudFront + Amazon S3 post," we can show them this and
-                say,
-                "Yes, but this one's different!"</p>
+            <p>So next time someone says, "Oh, another Amazon CloudFront + Amazon S3 post," we can show them this and say, "Yes, but this one's different!"</p>
         </article>
     </main>
 
     <footer>
-        <p>© 2025 Alessandro Gallo. All rights reserved.</p>
+        <p>© 2026 Alessandro Gallo. All rights reserved.</p>
     </footer>
 </body>
 

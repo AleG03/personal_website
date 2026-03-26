@@ -1,190 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <title>Alessandro Gallo - AWS DevOps Engineer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Alessandro Gallo's AWS DevOps Engineer portfolio, specializing in enterprise cloud governance, disaster recovery architectures, and mission-critical resilience.">
+  <meta name="description" content="Alessandro Gallo is an AWS DevOps Engineer specializing in enterprise cloud governance, zero-downtime migrations, and disaster recovery architectures.">
   <meta name="author" content="Alessandro Gallo">
+  
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://alessandrogallo.eu.org/">
+  <meta property="og:title" content="Alessandro Gallo - AWS DevOps Engineer">
+  <meta property="og:description" content="Portfolio of Alessandro Gallo, specializing in enterprise cloud governance and mission-critical resilience on AWS.">
+  <meta property="og:image" content="https://alessandrogallo.eu.org/assets/profile/alessandro.jpg">
+
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://alessandrogallo.eu.org/">
+  <meta property="twitter:title" content="Alessandro Gallo - AWS DevOps Engineer">
+  <meta property="twitter:description" content="Portfolio of Alessandro Gallo, specializing in enterprise cloud governance and mission-critical resilience on AWS.">
+  <meta property="twitter:image" content="https://alessandrogallo.eu.org/assets/profile/alessandro.jpg">
+
+  <link rel="preload" as="image" href="assets/profile/alessandro.jpg">
   <link rel="icon" href="/assets/favicon/favicon.svg" type="image/svg+xml">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    ::selection {
-      background: #e0ddd8;
-      color: #2c2c2c;
-    }
-
-    body {
-      font-family: Charter, 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', Georgia, serif;
-      font-size: 18px;
-      line-height: 1.8;
-      color: #1a1a1a;
-      background: #f9f7f4;
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-      -webkit-font-smoothing: subpixel-antialiased;
-      -moz-osx-font-smoothing: auto;
-    }
-
-    header {
-      margin-bottom: 5rem;
-    }
-
-    header img {
-      border-radius: 50%;
-      width: 96px;
-      height: 96px;
-      margin-bottom: 1.5rem;
-      border: 2px solid #e0ddd8;
-      object-fit: cover;
-    }
-
-    h1 {
-      font-size: 3rem;
-      font-weight: 400;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.03em;
-      color: #1a1a1a;
-      line-height: 1.1;
-    }
-
-    h2 {
-      font-size: 1.75rem;
-      font-weight: 400;
-      margin-bottom: 1.5rem;
-      color: #1a1a1a;
-      letter-spacing: -0.01em;
-    }
-
-    h3 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin: 2.5rem 0 0.75rem;
-      color: #2c2c2c;
-    }
-
-    p {
-      margin-bottom: 1.2rem;
-      color: #4a4a4a;
-    }
-
-    a {
-      color: #2c2c2c;
-      text-decoration: underline;
-      text-decoration-color: #a6a6a6;
-      text-underline-offset: 3px;
-      transition: all 0.2s ease;
-    }
-
-    a:hover {
-      color: #8b6f47;
-      text-decoration-color: #8b6f47;
-    }
-
-    .meta {
-      color: #595959;
-      font-size: 1rem;
-      font-style: italic;
-      margin-bottom: 1.5rem;
-    }
-
-
-
-    section {
-      margin-bottom: 5rem;
-      padding-left: 2rem;
-      border-left: 1px solid #e0ddd8;
-    }
-
-    ul {
-      list-style: none;
-      margin-bottom: 1.2rem;
-    }
-
-    li {
-      margin-bottom: 0.7rem;
-      padding-left: 1.2rem;
-      position: relative;
-      color: #4a4a4a;
-    }
-
-    li:before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: #8c8c8c;
-    }
-
-    .contact a {
-      margin-right: 1.5rem;
-      font-weight: 500;
-    }
-
-    a[href^="http"]:after {
-      content: " ↗";
-      font-size: 0.85em;
-      opacity: 0.6;
-    }
-
-
-
-    footer {
-      margin-top: 6rem;
-      padding-left: 2rem;
-      border-left: 1px solid #e0ddd8;
-      color: #595959;
-      font-size: 0.85rem;
-    }
-
-    @media (max-width: 600px) {
-      body {
-        padding: 2rem 1.5rem;
-      }
-
-      h1 {
-        font-size: 2.2rem;
-      }
-
-      section {
-        padding-left: 1.2rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
   <header>
     <img src="assets/profile/alessandro.jpg" alt="Alessandro Gallo" width="96" height="96" decoding="async">
     <h1>Alessandro Gallo</h1>
-    <p class="meta">AWS DevOps Engineer · Senior Consultant at beSharp S.p.A.</p>
+    <p class="meta">AWS DevOps Engineer · Senior Consultant at beSharp</p>
   </header>
 
   <main>
     <section>
       <h2>About</h2>
-      <p>AWS DevOps Engineer with 3+ years of experience building and improving cloud platforms on AWS. I help enterprise clients govern and modernize cloud infrastructure on AWS, from multi-account foundations with Control Tower to zero-downtime EKS migrations and resilient disaster recovery architectures.</p>
+      <p>I am an AWS DevOps Engineer focused on building robust, scalable, and secure cloud platforms. I help enterprise organizations govern and modernize their AWS infrastructure, transitioning them from legacy systems to resilient, automated cloud-native environments.</p>
     </section>
 
     <section>
       <h2>Skills</h2>
       <ul>
-        <li><strong>Cloud:</strong> Amazon Web Services, Microsoft Azure, Google Cloud Platform</li>
-        <li><strong>DevOps:</strong> Docker, Kubernetes, Jenkins, GitLab CI, Ansible</li>
-        <li><strong>Infrastructure as Code:</strong> Terraform, CloudFormation, AWS CDK</li>
+        <li><strong>Cloud:</strong> Amazon Web Services (AWS), Microsoft Azure, Google Cloud Platform (GCP)</li>
+        <li><strong>DevOps:</strong> Docker, Kubernetes (Amazon EKS), Jenkins, GitLab CI, Ansible, Azure DevOps, AWS CodeSuite</li>
+        <li><strong>Infrastructure as Code (IaC):</strong> Terraform, AWS CloudFormation, AWS CDK</li>
         <li><strong>Languages:</strong> Python, Bash, TypeScript, SQL</li>
-        <li><strong>Monitoring:</strong> Prometheus, Grafana, ELK Stack</li>
+        <li><strong>Monitoring & Observability:</strong> Prometheus, Grafana, ELK Stack, Amazon CloudWatch</li>
       </ul>
     </section>
 
@@ -193,43 +53,36 @@
       <h3>AWS DevOps Engineer</h3>
       <p class="meta">beSharp | Feb 2023 - Present | Pavia, IT</p>
       <ul>
-        <li>Architected and managed foundational cloud infrastructure for enterprise clients using Terraform and AWS CDK, enforcing strict governance and ensuring 99.99% availability.</li>
-        <li>Standardized CI/CD pipelines and Infrastructure as Code practices (AWS CodeSuite, Azure DevOps), reducing release cycle time by 60% while embedding automated compliance checks.</li>
-        <li>Led disaster recovery strategies and Kubernetes modernization (Amazon EKS) for mission-critical workloads, prioritizing high availability and zero-downtime migrations.</li>
+        <li>Architected enterprise-grade cloud foundations using Terraform and AWS CDK, enforcing automated security compliance and achieving <strong>99.99% infrastructure availability</strong> for highly regulated clients.</li>
+        <li>Standardized CI/CD pipelines across diverse teams using AWS CodeSuite and Azure DevOps, <strong>reducing release cycle times by 60%</strong> and accelerating time-to-market.</li>
+        <li>Led disaster recovery strategies and modernizations, executing <strong>zero-downtime monolith-to-microservices migrations on Amazon EKS</strong> to improve deployment frequency and high availability.</li>
       </ul>
     </section>
 
     <section>
       <h2>Featured Projects</h2>
 
-      <h3>Data Platform</h3>
+      <h3>Serverless Data Platform</h3>
       <p class="meta">AWS Glue, S3, Redshift, IAM | 2024</p>
-      <p>Designed a secure, serverless ETL data platform for an international humanitarian organization. Implemented a Single Source of Truth (SSOT) architecture, reducing data analysts' manual workload by 30%.</p>
+      <p>Designed a secure, serverless ETL data platform for an international humanitarian organization. Implemented a Single Source of Truth (SSOT) architecture, <strong>reducing data analysts' manual workload by 30%</strong> and significantly accelerating reporting capabilities.</p>
 
-      <h3>Cloud Governance &amp; Resilience</h3>
+      <h3>Enterprise Cloud Governance & Resilience</h3>
       <p class="meta">AWS Control Tower, Organizations, Route 53 | 2025</p>
-      <p>Architected a unified enterprise cloud foundation for a major Italian banking group across 100+ AWS accounts.
-  Implemented a comprehensive Disaster Recovery strategy with automated failover, achieving an RTO of under 15 minutes and an SLA target of 99.99% availability under strict regulatory standards.</p>
+      <p>Architected a unified cloud foundation for a major Italian banking group across 100+ AWS accounts. Implemented a comprehensive Disaster Recovery strategy with automated failover, <strong>achieving an RTO of under 15 minutes and an SLA target of 99.99% availability</strong> under strict financial regulatory standards.</p>
 
       <h3>Kubernetes Modernization</h3>
       <p class="meta">EKS, Terraform, Helm, IRSA | 2026</p>
-      <p>Led end-to-end EKS modernization for Italy's leading digital media group. Executed a blue-green cluster migration with zero downtime across dev, staging, and production environments.</p>
+      <p>Led end-to-end EKS modernization for Italy's leading digital media group. Executed a blue-green cluster migration, achieving <strong>zero downtime across dev, staging, and production environments</strong>.</p>
     </section>
 
     <section>
       <h2>Certifications</h2>
       <ul>
-        <li><strong>AWS:</strong> Solutions Architect Professional, Developer Associate, SysOps Administrator Associate, Solutions Architect Associate</li>
-        <li><strong>Microsoft:</strong> Azure Fundamentals, 365 Fundamentals, Security, Compliance, and Identity Fundamentals</li>
-        <li><strong>Cisco:</strong> Cyber Threat Management, Network Defense</li>
-        <li>Zyxel Certified Network Engineer</li>
+        <li><strong>AWS:</strong> Solutions Architect Professional (2024), Developer Associate (2024), SysOps Administrator Associate (2024), Solutions Architect Associate (2023)</li>
+        <li><strong>Microsoft:</strong> Azure Fundamentals (2022), 365 Fundamentals (2022), Security Compliance and Identity (2022)</li>
+        <li><strong>Cisco:</strong> Cisco Cyber Threat Management, Cisco Network Defense</li>
+        <li>Zyxel Certified Network Engineer (2022)</li>
       </ul>
-    </section>
-
-    <section>
-      <h2>Education</h2>
-      <h3>Associate Degree in Cloud and Data Security</h3>
-      <p class="meta">ITS Angelo Rizzoli | 2023 | Milan, IT</p>
     </section>
 
     <section>
@@ -240,22 +93,19 @@
 
       <h3><a href="blog/handling-multiple-domains-redirects.html">Multiple-Domain Redirects on AWS</a></h3>
       <p class="meta">September 2024</p>
-      <p>Using Amazon S3 and CloudFront to set up smart redirects for legacy domains without maintaining web servers.
-      </p>
+      <p>Using Amazon S3 and CloudFront to set up smart redirects for legacy domains without maintaining web servers.</p>
 
       <p><a href="blog/index.html">More posts →</a></p>
     </section>
 
-
-
     <section>
       <h2>Contact</h2>
-      <p>Feel free to reach out to discuss projects, collaborations, or roles.</p>
+      <p>I am always open to discussing cloud architecture, DevOps practices, or potential collaborations.</p>
       <p class="contact">
         <a href="mailto:gc.ale03@gmail.com">Email</a>
         <a href="https://github.com/AleG03" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://linkedin.com/in/alessandro-gallo-cassarino" target="_blank"
-          rel="noopener">LinkedIn</a>
+        <a href="https://linkedin.com/in/alessandro-gallo-cassarino" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="assets/Alessandro_Gallo_Resume.pdf" target="_blank">Resume PDF</a>
       </p>
     </section>
   </main>
@@ -264,5 +114,4 @@
     <p>© 2026 Alessandro Gallo. All rights reserved.</p>
   </footer>
 </body>
-
 </html>
